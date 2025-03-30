@@ -1,3 +1,10 @@
+/*
+Color codes: 
+    #F2D8B3 - Peachy Beige
+    #FBD266 - Yellow
+    #8FB0A9 - Light Teal
+    #D76735 - Burnt Orange
+*/
 .navbar {
     position: fixed;
     top: 0;
@@ -23,4 +30,13 @@
 
 .navbar ul a:hover {
     color: black;  
+}
+
+body
+{
+    margin: auto;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    /*background-image: src "./images/paiselyBackground.jpg";*/
 }
