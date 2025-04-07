@@ -45,6 +45,7 @@
         
         removeBtn.addEventListener("click", function() {
             container.removeChild(label);
+            container.removeChild(br);
         });
     
         // Append the checkbox, span, and remove button to the label
@@ -55,9 +56,11 @@
         // Append the label to the container
         container.appendChild(label);
     
-        // Add a line break to separate each checkbox
-        container.appendChild(document.createElement("br"));
-    
+        //Spacing
+        const br = document.createElement("br");
+        container.appendChild(label);
+        container.appendChild(br); 
+
         // Clear the input field after adding the ingredient
         input.value = "";
     }
