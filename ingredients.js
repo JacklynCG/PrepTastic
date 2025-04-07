@@ -12,10 +12,8 @@
 
     document.getElementById("add-ingredient-btn").addEventListener("click", addIngredient);
     document.getElementById("ingredient-input").addEventListener("keypress", function(event) {
-        
         if (event.key === "Enter") {
             addIngredient();
-        
         }
     });
     
@@ -29,22 +27,34 @@
         }
     
         const container = document.getElementById("ingredient-container");
+
         const label = document.createElement("label");
     
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox"; 
     
-        // Create a new span to hold the ingredient name
+        // Span to hold the ingredient name
         const span = document.createElement("span");
         span.textContent = ingredientName;
     
-        // Append the checkbox and span to the label
+        //Remove button
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add("remove-btn");
+    
+        
+        removeBtn.addEventListener("click", function() {
+            container.removeChild(label);
+        });
+    
+        // Append the checkbox, span, and remove button to the label
         label.appendChild(checkbox);
         label.appendChild(span);
+        label.appendChild(removeBtn);
     
         // Append the label to the container
         container.appendChild(label);
-        
+    
         // Add a line break to separate each checkbox
         container.appendChild(document.createElement("br"));
     

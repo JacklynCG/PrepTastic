@@ -7,3 +7,27 @@ input[type="checkbox"]:checked + span {
     color: gray;
     text-decoration: line-through;
   }
+
+  .remove-btn {
+    margin-left: 5px;
+    padding: 3px 6px;
+    background-color: rgb(255, 163, 92);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: rgb(186, 186, 185);
+}
+
+#add-ingredient-btn {
+  background-color: rgb(255, 163, 92);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#add-ingredient-btn:hover {
+  background-color: rgb(186, 186, 185);
+}
