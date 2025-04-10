@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/recipes.css">
+    <link rel="stylesheet" href="css/ingredients.css">
     <title>Recipes</title>
 </head>
 <body>
@@ -27,14 +28,21 @@
               <th colspan="2">Description</th>
             </tr>
             <tr>
-              <td>Time Frame</td>
-              <td rowspan="2">Ingredient</td>
+              <td>Time Frame: </td>
+              <td rowspan="2">Ingredients: 
+                  <div class="ingredient-container" id="ingredient-container">
+                  </div>
+                  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
+                  <button id="add-ingredient-btn">Add Ingredient</button>
+              </td>
             </tr>
             <tr>
-              <td>Step By Step</td>
+              <td>Step-By-Step: </td>
             </tr>
           </table>
     </div>
 
+    <!--JS LINKS-->
+    <script src="js/ingredients.js"></script>
 </body>
 </html>

@@ -1,4 +1,26 @@
+/*COLORS: 
+white: #F2D8B3
+Yellow: #FBD266
+Red: #D76735
+Blue: #8FB0A9
+*/
+
+.recipe-template{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 40px;
+      height: auto;
+      
+}
+
 table, th, td {
-    border: 1px solid black;
+    border: 3px solid #D76735;
     border-collapse: collapse;
+    color:#D76735;
+    padding: 10px;
+  }
+
+  th, td {
+    background-color: #FBD266
   }

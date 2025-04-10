@@ -4,30 +4,32 @@ label {
   }
 
 input[type="checkbox"]:checked + span {
-    color: gray;
+    color: #8FB0A9;
     text-decoration: line-through;
   }
 
   .remove-btn {
-    margin-left: 5px;
-    padding: 3px 6px;
-    background-color: rgb(255, 163, 92);
+    margin-left: 3px;
+    padding: 1px 3px;
+    background-color: #D76735;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: xx-small;
+
 }
 
 .remove-btn:hover {
-    background-color: rgb(186, 186, 185);
+    background-color: #8FB0A9;
 }
 
 #add-ingredient-btn {
-  background-color: rgb(255, 163, 92);
+  background-color: #D76735;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 #add-ingredient-btn:hover {
-  background-color: rgb(186, 186, 185);
+  background-color: #8FB0A9;
 }
