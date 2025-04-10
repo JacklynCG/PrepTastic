@@ -6,12 +6,32 @@ Blue: #8FB0A9
 */
 
 .recipe-template{
-    display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 40px;
-      height: auto;
+    display: grid;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    place-items: center;
+    margin: 40px;
+    height: auto;
+    background-color: #FBD266;
+
+    color: #D76735;
+    padding: 10px;
       
+}
+.image{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #D76735;
+    width: 99%;
+    min-height: 300px;
+ 
+}
+.title{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 table, th, td {
