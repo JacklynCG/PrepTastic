@@ -1,5 +1,6 @@
 /*
 Color codes: 
+    background-color: #f5f5f5;
     #F2D8B3 - Peachy Beige
     #FBD266 - Yellow
     #8FB0A9 - Light Teal
@@ -43,13 +44,16 @@ li :hover {
     color: #D76735;
 }
 
-.logo{
-    display: flex;
-    align-items: center;
+
+.header img {
+display: block;
+margin: auto;
+width: 50%;
+
+height: 100px;
+width:auto;
 }
-img {
-    height: 100px;
-  }
+
 
 
 
