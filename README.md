@@ -1,7 +1,7 @@
 # PrepTastic
 Meal prep project 
 
-<!--
+
 Maggie April 17th:
 I am going to try and get the recipes all done by thursday April 24th, my goals:
 
@@ -28,5 +28,5 @@ The TODOS for after the week:
 - Remove from favorites
 - Remove from meal
 
-->
+
 
