@@ -12,9 +12,10 @@ Blue: #8FB0A9
     place-items: center;
     margin: 40px;
     height: auto;
-    background-color: #FBD266;
+    background-color: #8FB0A9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    color: #D76735;
+    color: #8FB0A9;
     padding: 10px;
       
 }
@@ -22,25 +23,28 @@ Blue: #8FB0A9
     display:flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #D76735;
+    border: 3px solid #8FB0A9;
+    background-color: #d9e8e5;
     width: 99%;
     min-height: 300px;
+    
  
 }
 .title{
     display:flex;
     justify-content: center;
     align-items: center;
+    color:#5b716d;
     width: 100%;
 }
 
 table, th, td {
-    border: 3px solid #D76735;
+    border: 3px solid #8FB0A9;
     border-collapse: collapse;
-    color:#D76735;
+    color:#8FB0A9;
     padding: 10px;
   }
 
   th, td {
-    background-color: #FBD266
+    background-color: #d9e8e5;
   }
