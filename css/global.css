@@ -7,20 +7,14 @@ Color codes:
 */
 
 /*navbar/Header*/
-.logo{
-    background-color: #D76735;
-}
-img {
-    max-width: 100%;
-    height: auto;
-  }
+
 
 .navbar{
 background-color: #D76735;
 width: 100%;
 margin-bottom: 40px;
 
-position: -webkit-sticky; 
+position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
 }
@@ -48,6 +42,14 @@ li :hover {
     background-color: #F2D8B3;
     color: #D76735;
 }
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+img {
+    height: 100px;
+  }
 
 
 
