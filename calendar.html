@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" href="./css/calendar.css">
+	<link rel="stylesheet" href="css/ingredients.css">
     <link rel="stylesheet" href="./css/global.css">
 	<title>Dynamic Calendar</title>
 </head>
@@ -15,7 +16,9 @@
 
   <!--HEADER-->
   <div class="header">
+	<a href="./calendar.html">
     <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
+	</a>
   </div>
 
   <div class = "navbar">
@@ -28,8 +31,96 @@
     </ul>
   </div>
 
+  <section id="header-title">
+    <h1>Calendar</h1>
+
+    <div class="header">
+        <img src="./images/logo/small-logo-transparent-png.png" alt="Preptastic Icon">
+    </div>
+    
+    <hr>
+  </section>
+
+  <section id="page-section">
+	<h2>Welcome!</h2>
+	<h3>Weekly Foodcast</h3>  <!--Idk, like forecast...get et?-->
+
+	<div class="weekly-foodcast">
+		
+		<div class="foodcard-row">
+			<div class="foodcard">
+				<h3>Sunday</h3>
+				
+				<p><strong>Breakfast: </strong> Recipe Title</p>
+				<p><strong>Lunch: </strong>Recipe Title</p>
+				<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+
+			<div class="foodcard">
+				<h3>Monday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+
+			<div class="foodcard">
+				<h3>Tuesday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+
+			<div class="foodcard">
+				<h3>Wednesday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+
+			<div class="foodcard">
+				<h3>Thursday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+		</div>
+
+		<div class="foodcard-row">
+			<div class="foodcard">
+				<h3>Friday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+
+			<div class="foodcard">
+				<h3>Saturday</h3>
+				
+					<p><strong>Breakfast: </strong> Recipe Title</p>
+					<p><strong>Lunch: </strong>Recipe Title</p>
+					<p><strong>Dinner: </strong>Recipe Title</p>
+				
+			</div>
+		</div>
+
+	</div>
+  </section>
+
+  <hr>
 
 	<!-- Main wrapper for the calendar application -->
+  <section id="page-section">
 	<div class="wrapper">
         <div id="event-section">
             <h3>Add A meal</h3>
@@ -87,9 +178,25 @@
 				</div>
 			</div>
 		</div>
+	</section>
+
+		<hr>
+
+		<section id="page-section">
+			<h2>Groceries</h2>
+			<h3>Ingredients Still Needed</h3>
+
+			  <div class="ingredient-container" id="ingredient-container">
+			  </div>
+			  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
+			  <button id="add-ingredient-btn">Add Ingredient</button>
+		
+		</section>
+		<hr>
+
+			
 
         <div id="reminder-section">
-            <h3>Groceries Needed</h3>
             <!-- List to display reminders -->
             <ul id="reminderList">
                 <li data-event-id="1">
@@ -102,8 +209,12 @@
                 </li>
             </ul>
         </div>
+	
+
 	<!-- Include the JavaScript file for the calendar functionality -->
 	<script src="js/calendar.js"></script>
+	
+	 <script src="js/ingredients.js"></script>
 
 </body>
 </html>

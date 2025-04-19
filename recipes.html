@@ -14,7 +14,9 @@
 
   <!--HEADER-->
   <div class="header">
-    <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
+    <a href="./calendar.html">
+      <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
+    </a>
   </div>
 
   <div class = "navbar">
@@ -26,6 +28,26 @@
       <li><a href="./feed.html">Feed</a></li>
     </ul>
   </div>
+  
+  <section id="header-title">
+    <h1>Your Recipes</h1>
+
+    <div class="header">
+        <img src="./images/logo/small-logo-transparent-png.png" alt="Preptastic Icon">
+    </div>
+    
+    <div class="button-group">
+      <button id="recipeBtn"><h2>Create Recipe</h2></button>
+      <a href="./feed.html"><button id="recipeBtn"><h2>Find Recipes</h2></button></a>
+    </div>
+    <hr>
+  </section>
+
+  <section id="page-section">
+    <h2>Your Saved Recipes</h2>
+    <h3>Enjoy...</h3>
+  </section>
+  
   
 
     <div class="recipe-template">
@@ -50,72 +72,9 @@
           </table>
     </div>
 
-    <div class="recipe-template">
-      <div class="image">Image Upload Goes Here</div>
-      <div class="title"><h2>Title</h2></div>
-        <table style="width:100%">
-            <tr>
-              <th colspan="2">Description</th>
-            </tr>
-            <tr>
-              <td>Time Frame: </td>
-              <td rowspan="2">Ingredients: 
-                  <div class="ingredient-container" id="ingredient-container">
-                  </div>
-                  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
-                  <button id="add-ingredient-btn">Add Ingredient</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Step-By-Step: </td>
-            </tr>
-          </table>
-    </div>
 
-    <div class="recipe-template">
-      <div class="image">Image Upload Goes Here</div>
-      <div class="title"><h2>Title</h2></div>
-        <table style="width:100%">
-            <tr>
-              <th colspan="2">Description</th>
-            </tr>
-            <tr>
-              <td>Time Frame: </td>
-              <td rowspan="2">Ingredients: 
-                  <div class="ingredient-container" id="ingredient-container">
-                  </div>
-                  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
-                  <button id="add-ingredient-btn">Add Ingredient</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Step-By-Step: </td>
-            </tr>
-          </table>
-    </div>
 
-    <div class="recipe-template">
-      <div class="image">Image Upload Goes Here</div>
-      <div class="title"><h2>Title</h2></div>
-        <table style="width:100%">
-            <tr>
-              <th colspan="2">Description</th>
-            </tr>
-            <tr>
-              <td>Time Frame: </td>
-              <td rowspan="2">Ingredients: 
-                  <div class="ingredient-container" id="ingredient-container">
-                  </div>
-                  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
-                  <button id="add-ingredient-btn">Add Ingredient</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Step-By-Step: </td>
-            </tr>
-          </table>
-    </div>
-
+    
     <!--JS LINKS-->
     <script src="js/ingredients.js"></script>
 </body>

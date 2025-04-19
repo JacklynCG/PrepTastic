@@ -2,11 +2,17 @@
 Meal prep project 
 
 
+Maggie April 18th:
+I did a lot of stuff today, due to time constrants I just kinda went for it
+If you guys hate what I've done or if its causing issues dont hesitate to ask me or just 
+delete it
+
+
 Maggie April 17th:
 I am going to try and get the recipes all done by thursday April 24th, my goals:
 
 1. First and foremost we need the front end to be done by thursday:
-    - Navbar
+    - Navbar -------------> DONE
     - icon
     - Pages structure: The same formatting (margins padding), colors, fonts, on all pages
 
