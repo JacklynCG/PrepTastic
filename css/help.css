@@ -8,7 +8,7 @@
     padding: 20px;
 }
 
- .questions {
+.questions {
     margin-top: 1%;
     margin-left: 3%;
     margin-right: 3%;
@@ -20,36 +20,25 @@ h1 {
     color: #D76735;
 }
 
-.carousel img {
-    vertical-align: top;
-    width: 100%;
-    height: 50%;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-
 /* Accordion content */
 .accordion {
     margin: 0 auto;
 }
-
 
 .accordion-item {
     margin-bottom: 20px;
     border-radius: 5px;
 }
 
-
 .accordion-header {
     background-color: #d9e8e5;
     color: teal;
-    padding: 15px;
+    padding: 0px;
     font-size: 18px;
     cursor: pointer;
     text-align: center;
     border: 3px solid #8FB0A9;
 }
-
 
 .accordion-content {
     display: none;
@@ -58,10 +47,8 @@ h1 {
     padding: 0 10px;  /* Adds padding when open */
     background-color: #d9e8e5;
     transition: max-height 1.03s ease; 
-    border: 3px solid #8FB0A9;
     color: teal;
 }
-
 
 .accordion-content.active {
     display: block; 
@@ -71,4 +58,32 @@ h1 {
 
 .accordion-header:hover{
     background-color:#d2d2d2;
+}
+
+.carousel-images {
+    display:flex; 
+    transition: transform 0.5s ease; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.carousel-images img {
+    width: 75%;
+    height: auto;
+    object-fit:cover;
+    display: none; 
+  }
+
+
+.carousel-images img.active 
+{
+    display: block; 
+}
+
+.prev {
+    left: 0px;
+}
+
+.next {
+    right: 100px; 
 }
