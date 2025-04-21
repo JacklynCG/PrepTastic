@@ -1,0 +1,74 @@
+.help_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+
+.help_grid div {
+    padding: 20px;
+}
+
+ .questions {
+    margin-top: 1%;
+    margin-left: 3%;
+    margin-right: 3%;
+    min-height: 50vh;
+    padding: 40px 9% 80px;
+}
+
+h1 {
+    color: #D76735;
+}
+
+.carousel img {
+    vertical-align: top;
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+/* Accordion content */
+.accordion {
+    margin: 0 auto;
+}
+
+
+.accordion-item {
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+.accordion-header {
+    background-color: #d9e8e5;
+    color: teal;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    border: 3px solid #8FB0A9;
+}
+
+
+.accordion-content {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;  /* Adds padding when open */
+    background-color: #d9e8e5;
+    transition: max-height 1.03s ease; 
+    border: 3px solid #8FB0A9;
+    color: teal;
+}
+
+
+.accordion-content.active {
+    display: block; 
+    padding: 10px; 
+    max-height: 1000px;
+}
+
+.accordion-header:hover{
+    background-color:#d2d2d2;
+}

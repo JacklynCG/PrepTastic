@@ -12,7 +12,7 @@ CREATE TABLE recipe (
     ingredients VARCHAR(300) NOT NULL,
     link VARCHAR(300) NOT NULL,
     notes VARCHAR(300),
-    rating INT CONSTRAINT (rating >= 0 AND rating <= 5),
+    rating INT CHECK (rating >= 0 AND rating <= 5),
     PRIMARY KEY (ID)
 );
 
@@ -51,11 +51,11 @@ CREATE TABLE recipe_ingredients (
 
 -- dummy values for the tables to test PHP and HTML code
 INSERT INTO recipe (name, author, servings, time, ingredients, link, notes, rating)
-VALUES ("The Perfect Grilled Cheese", "Food Network", 1, 00:20:00, "Two slices of bread, 
+VALUES ("The Perfect Grilled Cheese", "Food Network", 1, "00:20:00", "Two slices of bread, 
 two slices of your favorite cheese, some butter", 
 "https://www.foodnetwork.com/recipes/food-network-kitchen/the-perfect-grilled-cheese-3636831", "Great recipe! Could add more cheese", 4);
 INSERT INTO recipe (name, author, servings, time, ingredients, link, notes, rating) 
-VALUES ("The Best Chocolate Chip Cookie Recipe Ever", "JoyFoodSunshine", 36, 00:30:00, 
+VALUES ("The Best Chocolate Chip Cookie Recipe Ever", "JoyFoodSunshine", 36, "00:30:00", 
 "1 cup salted butter, 1 cup granulated sugar, 1 cup light brown sugar, 2 teaspoons pure vanilla extract, 2 large eggs, 
 3 cups all-purpose flour, 1 teaspoon baking soda, 1/2 teaspoon baking powder, 1 teaspoon sea salt, 2 cups chocolate chips (12 oz)",
 "https://joyfoodsunshine.com/wprm_print/the-best-chocolate-chip-cookie-recipe-ever", "Add more chocolate chips", 5);
@@ -77,8 +77,8 @@ INSERT INTO recipe_ingredients (recipe_ID, ingredient_ID)
 VALUES (2, 3);
 
 INSERT INTO day (date, breakfast, dinner, is_meal_prep)
-VALUES (2025-04-17, 2, 1, FALSE);
+VALUES ("2025-04-17", 2, 1, FALSE);
 INSERT INTO day (date, lunch, dinner, is_meal_prep)
-VALUES (2025-04-02, 1, 2, TRUE);
+VALUES ("2025-04-02", 1, 2, TRUE);
 INSERT INTO day (date, lunch, dinner, is_meal_prep)
-VALUES (2025-03-31, 2, 1, TRUE);
+VALUES ("2025-03-31", 2, 1, TRUE);
