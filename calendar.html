@@ -41,103 +41,92 @@
     <hr>
   </section>
 
-  <section id="page-section">
+  <!--<section id="page-section">
 	<h2>Welcome!</h2>
-	<h3>Weekly Foodcast</h3>  <!--Idk, like forecast...get et?-->
+	<h3>Weekly Foodcast</h3>  Idk, like forecast...get et?
 
 	<div class="weekly-foodcast">
-		
 		<div class="foodcard-row">
 			<div class="foodcard">
 				<h3>Sunday</h3>
-				
 				<p><strong>Breakfast: </strong> Recipe Title</p>
 				<p><strong>Lunch: </strong>Recipe Title</p>
 				<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 
 			<div class="foodcard">
 				<h3>Monday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 
 			<div class="foodcard">
 				<h3>Tuesday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 
 			<div class="foodcard">
 				<h3>Wednesday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 
 			<div class="foodcard">
 				<h3>Thursday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 		</div>
 
 		<div class="foodcard-row">
 			<div class="foodcard">
 				<h3>Friday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 
 			<div class="foodcard">
 				<h3>Saturday</h3>
-				
 					<p><strong>Breakfast: </strong> Recipe Title</p>
 					<p><strong>Lunch: </strong>Recipe Title</p>
 					<p><strong>Dinner: </strong>Recipe Title</p>
-				
 			</div>
 		</div>
-
 	</div>
-  </section>
+  </section>-->
 
   <hr>
 
+
+  
 	<!-- Main wrapper for the calendar application -->
   <section id="page-section">
 	<div class="wrapper">
         <div id="event-section">
             <h3>Add A meal</h3>
+			
             <input type="date" id="eventDate">
-            <input type="text"
-                id="eventTitle"
-                placeholder="Recipe Name">
-            <!--<input type="text"  ->RECIPE SELCTION?
-                id="eventTitle"
-                placeholder="Recipe">-->
-            <button id="addEvent" onclick="addEvent()">
+            <form autocomplete="off" action="./recipeList.js">
+				<div class="autocomplete">
+					<input id="recipeID" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
+				</div>
+			</form>
+			<input type="text" id="eventTitle" placeholder="Recipe Name">
+            <input type="text" id="recipeLink" placeholder="Recipe Link">
+			
+            <button id="addMeal" onclick="addMeal()">
                 Add Meal
             </button>
         </div>
     </div>
 
-			<div class="calendar-container">
+			<div class="container-calendar">
 				<h3 id="monthAndYear"></h3>
 				<div class="button-container-calendar">
 					<button id="previous"
@@ -149,9 +138,15 @@
 						›
 					</button>
 				</div>
-				<table class="table-calendar"
-					id="calendar"
-					data-lang="en">
+				<div class="button-container-calendar">
+					<select id="viewType">
+						<option value="daily" onchange="renderDailyView()">Daily</option>
+						<option value="weekly" onchange="renderWeeklyView()">Weekly</option>
+						<option value="monthly" onchange="renderMonthyView(month, year)">Monthly</option>"
+					</select>
+				</div>
+				
+				<table class="table-calendar" id="calendar" data-lang="en">
 					<thead id="thead-month"></thead>
 					<!-- Table body for displaying the calendar -->
 					<tbody id="calendar-body"></tbody>
@@ -174,8 +169,9 @@
 						<option value=11>Dec</option>
 					</select>
 					<!-- Dropdown to select a specific year -->
-					<select id="year" onchange="jump()"></select>
-				</div>
+					<select id="year" onchange="jump()"></select>	
+							
+					</div>
 			</div>
 		</div>
 	</section>
@@ -209,12 +205,11 @@
                 </li>
             </ul>
         </div>
-	
+
 
 	<!-- Include the JavaScript file for the calendar functionality -->
-	<script src="js/calendar.js"></script>
-	
-	 <script src="js/ingredients.js"></script>
+	<script src="./js/recipeList.js"></script>
+	<script src="./js/calendar.js"></script>
 
 </body>
 </html>

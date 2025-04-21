@@ -1,8 +1,4 @@
-// calendar.js
-let viewType = "monthly";  // default view
-let currentDate = new Date();  // needed for day/week view
-let calendarView = document.getElementById("calendar-body"); // make sure this exists in your HTML
-
+import { recipeNames } from "./recipeList.js";
 // Define an array to store events
 let events = [];
 
@@ -108,13 +104,9 @@ currentYear = today.getFullYear();
 selectYear = document.getElementById("year");
 selectMonth = document.getElementById("month");
 
-createYear = generate_year_range(2015, 2050);
+createYear = generate_year_range(1970, 2050);
 
 document.getElementById("year").innerHTML = createYear;
-document.getElementById("viewType").addEventListener("change", function (e) {
-	viewType = e.target.value;
-	showCalendar(currentMonth, currentYear);
-});
 
 let calendar = document.getElementById("calendar");
 
@@ -146,7 +138,8 @@ $dataHead += "</tr>";
 
 document.getElementById("thead-month").innerHTML = $dataHead;
 
-monthAndYear = document.getElementById("monthAndYear");
+monthAndYear =
+	document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
 // Function to navigate to the next month
@@ -174,94 +167,59 @@ function jump() {
 }
 
 // Function to display the calendar
-function showCalendar(month, year)
- {
-	calendarView.innerHTML = ""; // clear view
-	monthAndYear.innerHTML = months[month] + "" + year;
-	selectYear.value = year;
-	selectMonth.value = month; 
-
-	if (viewType === "daily") {
-		renderDailyView();
-	} else if (viewType === "weekly") {
-		renderWeeklyView();
-	} else {
-		// Default to monthly view
-		renderMonthlyView(month, year);
-	}
-	displayReminders();	
-}
-
-
-function renderDailyView() 
-{ 
-	const dayDiv = document.createElement('div'); 
-	dayDiv.className = 'daily';
-	dayDiv.textContent = currentDate.toDateString(); 
-	calendarView.appendChild(dayDiv); 
-} 
-
-
-function renderWeeklyView() 
-{ 
-	const startOfWeek = new Date(currentDate); 
-	startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); 
-	for (let i = 0; i < 7; i++)  
-	{ 
-		const weekDay = new Date(startOfWeek); 
-		weekDay.setDate(startOfWeek.getDate() + i); 
-		const weekDiv = document.createElement('div'); 
-		weekDiv.className = 'weekly'; 
-		weekDiv.textContent = weekDay.toDateString(); 
-		calendarView.appendChild(weekDiv); 
-	} 
-
-	
-
-
-} 
-
-function renderMonthlyView(month, year) {
+function showCalendar(month, year) {
 	let firstDay = new Date(year, month, 1).getDay();
-	let date = 1;
+	tbl = document.getElementById("calendar-body");
+	tbl.innerHTML = "";
+	monthAndYear.innerHTML = months[month] + " " + year;
+	selectYear.value = year;
+	selectMonth.value = month;
 
+	let date = 1;
 	for (let i = 0; i < 6; i++) {
 		let row = document.createElement("tr");
 		for (let j = 0; j < 7; j++) {
-			let cell = document.createElement("td");
-
 			if (i === 0 && j < firstDay) {
-				cell.textContent = "";
+				cell = document.createElement("td");
+				cellText = document.createTextNode("");
+				cell.appendChild(cellText);
+				row.appendChild(cell);
 			} else if (date > daysInMonth(month, year)) {
 				break;
 			} else {
+				cell = document.createElement("td");
 				cell.setAttribute("data-date", date);
 				cell.setAttribute("data-month", month + 1);
 				cell.setAttribute("data-year", year);
 				cell.setAttribute("data-month_name", months[month]);
 				cell.className = "date-picker";
-				cell.innerHTML = "<span>" + date + "</span>";
+				cell.innerHTML = "<span>" + date + "</span";
 
 				if (
 					date === today.getDate() &&
 					year === today.getFullYear() &&
 					month === today.getMonth()
 				) {
-					cell.classList.add("selected");
+					cell.className = "date-picker selected";
 				}
 
+				// Check if there are events on this date
 				if (hasEventOnDate(date, month, year)) {
 					cell.classList.add("event-marker");
-					cell.appendChild(createEventTooltip(date, month, year));
+					cell.appendChild(
+						createEventTooltip(date, month, year)
+				);
 				}
+
+				row.appendChild(cell);
 				date++;
 			}
-			row.appendChild(cell);
 		}
-		calendarView.appendChild(row);
+		tbl.appendChild(row);
 	}
-}
 
+	displayReminders();
+}
 
 // Function to create an event tooltip
 function createEventTooltip(date, month, year) {
@@ -272,8 +230,8 @@ function createEventTooltip(date, month, year) {
 		let event = eventsOnDate[i];
 		let eventDate = new Date(event.date);
 		let eventText = `<strong>${event.title}</strong> - 
-			<a href="${event.description}" target="_blank">View Recipe</a><br>
-			on ${eventDate.toLocaleDateString()}`;
+			${event.description} on 
+			${eventDate.toLocaleDateString()}`;
 		let eventElement = document.createElement("p");
 		eventElement.innerHTML = eventText;
 		tooltip.appendChild(eventElement);
@@ -306,26 +264,98 @@ function daysInMonth(iMonth, iYear) {
 // Call the showCalendar function initially to display the calendar
 showCalendar(currentMonth, currentYear);
 
-document.getElementById("addMeal").addEventListener("click", function () 
-{
-	let date = eventDateInput.value;
-	let title = eventTitleInput.value;
-	let description = document.getElementById("recipeLink" || recipeID).value; // Use recipe link as description
 
-	if (date && title) {
-		let eventId = eventIdCounter++;
+function autocomplete(inp, arr) {
+	let currentFocus;
 
-		events.push({
-			id: eventId,
-			date: date,
-			title: title,
-			description: description
-		});
+	// When user types into the input field
+	inp.addEventListener("input", function () {
+		let a, b, i, val = this.value;
+		closeAllLists();
+		if (!val) return false;
+		currentFocus = -1;
 
-		showCalendar(currentMonth, currentYear);
-		eventDateInput.value = "";
-		eventTitleInput.value = "";
-		document.getElementById("recipeLink").value = "";
-		displayReminders();
+		// Create a container DIV (a) for suggestion items
+		a = document.createElement("DIV");
+		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("class", "autocomplete-items");
+
+		// Append it to the same parent as the input field
+		this.parentNode.appendChild(a);
+
+		// Loop through recipe array (arr)
+		for (i = 0; i < arr.length; i++) {
+			if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
+
+				// Create each suggestion item (b)
+				b = document.createElement("DIV");
+				b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+				b.innerHTML += arr[i].substr(val.length);
+				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+
+				// When user clicks a suggestion
+				b.addEventListener("click", function () {
+					const selectedName = this.getElementsByTagName("input")[0].value;
+					inp.value = selectedName;
+
+					// Auto-fill recipe title and link fields
+					document.getElementById("eventTitle").value = selectedName;
+					const recipe = recipes.find(r => r.name === selectedName);
+					if (recipe) {
+						document.getElementById("recipeLink").value = recipe.link;
+					}
+
+					closeAllLists();
+				});
+
+				// Add this item (b) to the container (a)
+				a.appendChild(b);
+			}
+		}
+	});
+
+	// Handle keyboard navigation (up/down arrows + enter)
+	inp.addEventListener("keydown", function (e) {
+		let x = document.getElementById(this.id + "autocomplete-list");
+		if (x) x = x.getElementsByTagName("div");
+		if (e.keyCode == 40) {
+			currentFocus++;
+			addActive(x);
+		} else if (e.keyCode == 38) {
+			currentFocus--;
+			addActive(x);
+		} else if (e.keyCode == 13) {
+			e.preventDefault();
+			if (currentFocus > -1 && x) {
+				x[currentFocus].click();
+			}
+		}
+	});
+
+	function addActive(x) {
+		if (!x) return false;
+		removeActive(x);
+		if (currentFocus >= x.length) currentFocus = 0;
+		if (currentFocus < 0) currentFocus = x.length - 1;
+		x[currentFocus].classList.add("autocomplete-active");
 	}
-});
+
+	function removeActive(x) {
+		for (let i = 0; i < x.length; i++) {
+			x[i].classList.remove("autocomplete-active");
+		}
+	}
+
+	function closeAllLists(elmnt) {
+		let x = document.getElementsByClassName("autocomplete-items");
+		for (let i = 0; i < x.length; i++) {
+			if (elmnt !== x[i] && elmnt !== inp) {
+				x[i].parentNode.removeChild(x[i]);
+			}
+		}
+	}
+
+	document.addEventListener("click", function (e) {
+		closeAllLists(e.target);
+	});
+}
