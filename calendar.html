@@ -107,14 +107,14 @@
   
 	<!-- Main wrapper for the calendar application -->
   <section id="page-section">
+	
 	<div class="wrapper">
         <div id="event-section">
             <h3>Add A meal</h3>
-			
             <input type="date" id="eventDate">
-            <form autocomplete="off" action="./recipeList.js">
+			<form autocomplete="off">
 				<div class="autocomplete">
-					<input id="recipeID" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
+					<input id="dbRecipe" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
 				</div>
 			</form>
 			<input type="text" id="eventTitle" placeholder="Recipe Name">
@@ -190,8 +190,9 @@
 		</section>
 		<hr>
 
-			
-
+		
+<section id="page-section">		
+	<h2>Planned Meals</h2>
         <div id="reminder-section">
             <!-- List to display reminders -->
             <ul id="reminderList">
@@ -205,10 +206,12 @@
                 </li>
             </ul>
         </div>
-
+</section>
 
 	<!-- Include the JavaScript file for the calendar functionality -->
+
 	<script src="./js/recipeList.js"></script>
+	<script src="./js/autocomplete.js"></script>
 	<script src="./js/calendar.js"></script>
 
 </body>
