@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <button type="addToMeal" id="addToMealBtn">Add to Meal</button>
         <button type="Post" id="postToFeedBtn">Post to Feed</button>
-        <button type="Remove" id="recipeRemoveBtn">Delete</button>
+        <button type="Remove" id="recipeRemoveBtn">Remove</button>
         
          
         

@@ -39,7 +39,7 @@
     
         //Remove button
         const removeBtn = document.createElement("button");
-        removeBtn.textContent = "Delete";
+        removeBtn.textContent = " X ";
         removeBtn.classList.add("remove-btn");
     
         
