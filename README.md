@@ -36,5 +36,11 @@ Feed:
 
 
 
+Sarah April 17th
+- Added SQL code for database, also added "dummy" values in for testing of PHP and HTML code once we get to that point (sometime before Thursday)
+- IMPORTANT NOTE: database should be named preptastic so PHP code works properly
 
-
+My goals for before Thursday (probably sometime this weekend):
+- Figure out some basic PHP code for one of the pages (probably the recipe page)
+- Check SRS and SDD document for any missing requirements that need to be implemented still and haven't been claimed already
+- Do help page

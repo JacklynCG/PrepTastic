@@ -60,15 +60,15 @@ margin-bottom: 10px;
 margin-top: 10px;
 width: 50%;
 
-height: 100px;
+height: 75px;
 width:auto;
 }
 
 #header-title {
     text-align: center;
     color: #54a496; 
-    font-size: 48px;
-    margin-top: 100px;
+    font-size: 40px;
+    margin-top: 50px;
 }
 
 /*Main Body Structure*/
@@ -109,8 +109,8 @@ hr {
     border: 1px solid #8FB0A9;
     width: 90%;
     margin: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
 
 
