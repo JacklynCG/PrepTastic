@@ -28,18 +28,18 @@ position: sticky;
 top: 0;
 }
 
-ul {
+.navbar ul {
 list-style-type: none;
 margin: 0;
 padding: 0;
 overflow: hidden;
 }
 
-li {
+.navbar li {
 float: right;
 }
 
-li a {
+.navbar li a {
 color: #F2D8B3;
 display: block;
 text-align: center;

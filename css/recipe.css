@@ -1,0 +1,123 @@
+
+  /*
+Color codes: 
+    background-color: #f5f5f5;
+    #F2D8B3 - Peachy Beige
+    #FBD266 - Yellow
+    #8FB0A9 - Main Page Teal
+    
+
+    #D76735 - Burnt Orange
+
+LOGO COLOR CODES:
+    #fec58e - light oarnge
+    #b9dea3 - light green
+    #6ab79e - Appple teal (lightest)
+    #54a496 - Preptastic teal (darker)
+*/
+.hidden{
+    display: none;
+}
+
+.template-container{
+    width: 80%;
+    margin: auto;
+    padding: 2rem;
+    border: 3px solid #8FB0A9;
+    background-color: #d9e8e5;
+    color:#5b716d;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+  
+
+
+
+  input[type="text"], textarea {
+    display: block;
+    width: 50%;
+    padding: 0.5rem;
+
+    background-color: #f5f5f5;
+    color: #333;
+
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    border: 1px solid #8FB0A9;
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  input[type="number"] {
+    display:flex;
+    width: 10%;
+    background-color: #f5f5f5;
+    color: #333;
+
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    border: 1px solid #8FB0A9;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+ 
+  
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #8FB0A9;
+    color: #f5f5f5;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
+button:hover{
+    background: #F2D8B3;
+    color: #D76735;
+}
+  
+  
+  ul, ol {
+    padding-left: 1rem;
+  }
+  
+
+  #cardsContainer {
+    width: 80%;
+    margin: auto;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1em;
+  }
+  
+  .card {
+    max-width: 600px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 3px solid #8FB0A9;
+    background-color: #d9e8e5;
+    color:#5b716d;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #D76735;
+    
+  }
+  
+  .card ul, .card ol {
+    
+    margin: 0.5rem 0 0 1.25rem;
+  }
