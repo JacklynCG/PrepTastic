@@ -15,18 +15,80 @@ LOGO COLOR CODES:
     #54a496 - Preptastic teal (darker)
 */
 
-/*navbar/Header*/
 
-.footer{
-background-color: #D76735;
-color: #F2D8B3;
-width: 100%;
-margin-top: 50px;
-padding: 1rem;
-text-align: center;
+/*Main Body Structure*/
+
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+body
+{
+    margin: auto;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    min-height: 100vh;
+    
+}
+
+  
+
+#page-section{
+    width: 80%;
+    margin: auto;
+}
+
+#page-section h2 {
+    color: #D76735;
+    font-size: 35px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#page-section h3 {
+    color: #fec58e;
+    font-size: 25px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 50px;
 }
 
 
+
+/* Footer */
+.footer {
+    background-color: #8FB0A9;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 20px 10px 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer a {
+    color: #f5f5f5;
+    text-decoration: underline;
+  }
+  
+  .footer a:hover {
+    text-decoration: none;
+  }
+  
+  .footer-logo img {
+    display: block;
+    margin: 15px auto 0;
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+  }
+  
+
+/*navbar/Header*/
 
 .navbar{
 background-color: #D76735;
@@ -81,36 +143,6 @@ width:auto;
     margin-top: 50px;
 }
 
-/*Main Body Structure*/
-
-
-body
-{
-    margin: auto;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    color: #333;
-}
-
-#page-section{
-    width: 80%;
-    margin: auto;
-}
-
-#page-section h2 {
-    color: #D76735;
-    font-size: 35px;
-    padding: 0px;
-    margin: 0px;
-}
-
-#page-section h3 {
-    color: #fec58e;
-    font-size: 25px;
-    padding: 0px;
-    margin: 0px;
-    margin-bottom: 50px;
-}
 
 /*basic styleing*/
 
@@ -140,4 +172,6 @@ button:hover{
     background: #F2D8B3;
     color: #D76735;
 }
+
+
 
