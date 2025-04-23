@@ -34,30 +34,25 @@
   </section>
 
   <section id="page-section">
-    <h2>Recipe Ingredients</h2>
-    <h3>Items In Your Current Meals</h3>
-    <p>Checkmark items you already have, or add items you may additionally need!</p>
+    <h2>Your Ingredients</h2>
 
     <!--Right now I am just trying to get the "checkmark" feature to work, where when ingredients are clicked on
     it will make the words a light grey to signify that the user owns that ingredient.-->
 
     <!--Basic Ingredient Feature that allows user to continously add ingredients to the list-->
-    <div class="ingredient-container" id="ingredient-container">
-    </div>
     <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
+    <input type="text" id="ingredient-amount" placeholder="Enter amount needed">
     <button id="add-ingredient-btn">Add Ingredient</button>
 
-
+    <div class="ingredient-container" id="ingredient-container">
+    </div>
     <!--TODO:
     Create an ingredient list that will update as recipes are added to the weekly meals-->
 
     <!--JS link-->
   
   </section>
-
-  <hr>
-
    
-    <script src="js/ingredients.js"></script>
+  <script src="js/ingredients.js"></script>
 </body>
 </html>

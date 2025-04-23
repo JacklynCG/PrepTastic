@@ -31,10 +31,7 @@ CREATE TABLE day (
 CREATE TABLE ingredient (
     ID int AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    description VARCHAR(100),
     have_ingredient BOOLEAN,
-    list_ID INT NOT NULL,
-    price DECIMAL(4, 2),
     amount INT,
     PRIMARY KEY (ID)
 );
