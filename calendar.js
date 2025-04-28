@@ -1,4 +1,4 @@
-import { recipeNames } from "./recipeList.js";
+i/*mport { recipeNames } from "./recipeList.js";
 // Define an array to store events
 let events = [];
 
@@ -264,3 +264,4 @@ function daysInMonth(iMonth, iYear) {
 // Call the showCalendar function initially to display the calendar
 showCalendar(currentMonth, currentYear);
 
+*/

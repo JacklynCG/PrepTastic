@@ -1,5 +1,5 @@
 // calendar.js
-let viewType = "monthly";  // default view
+let viewType = "weekly";  // default view
 let currentDate = new Date();  // needed for day/week view
 let calendarView = document.getElementById("calendar-body"); // make sure this exists in your HTML
 
@@ -20,7 +20,8 @@ let reminderList =
 let eventIdCounter = 1;
 
 // Function to add events
-function addEvent() {
+function addEvent() 
+{
 	let date = eventDateInput.value;
 	let title = eventTitleInput.value;
 	let description = eventDescriptionInput.value;
@@ -31,11 +32,14 @@ function addEvent() {
 
 		events.push(
 			{
-				id: eventId, date: date,
+				id: eventId, 
+				date: date,
 				title: title,
 				description: description
 			}
 		);
+
+		// Refresh all calendar views to reflect the new event
 		showCalendar(currentMonth, currentYear);
 		eventDateInput.value = "";
 		eventTitleInput.value = "";
@@ -43,6 +47,7 @@ function addEvent() {
 		displayReminders();
 	}
 }
+
 
 // Function to delete an event by ID
 function deleteEvent(eventId) {
@@ -59,16 +64,20 @@ function deleteEvent(eventId) {
 	}
 }
 
+
+
 // Function to display reminders
 function displayReminders() {
 	reminderList.innerHTML = "";
-	for (let i = 0; i < events.length; i++) {
+	for (let i = 0; i < events.length; i++) 
+		{
 		let event = events[i];
 		let eventDate = new Date(event.date);
 		if (eventDate.getMonth() ===
 			currentMonth &&
 			eventDate.getFullYear() ===
-			currentYear) {
+			currentYear) 
+			{
 			let listItem = document.createElement("li");
 			listItem.innerHTML =
 				`<strong>${event.title}</strong> - 
@@ -90,8 +99,7 @@ function displayReminders() {
 	}
 }
 
-// Function to generate a range of 
-// years for the year select input
+// Function to generate a range of years for the year select input
 function generate_year_range(start, end) {
 	let years = "";
 	for (let year = start; year <= end; year++) {
@@ -192,34 +200,66 @@ function showCalendar(month, year)
 	displayReminders();	
 }
 
+// Function to handle view changes
+function changeView() {
+    const viewType = document.getElementById("viewType").value;
+    
+    if (viewType === "daily") {
+        renderDailyView();
+    } else if (viewType === "weekly") {
+        renderWeeklyView();
+    } else {
+        showCalendar(currentMonth, currentYear); // Monthly
+    }
+}
 
-function renderDailyView() 
-{ 
-	const dayDiv = document.createElement('div'); 
-	dayDiv.className = 'daily';
-	dayDiv.textContent = currentDate.toDateString(); 
-	calendarView.appendChild(dayDiv); 
-} 
+// Render daily view
+function renderDailyView() {
+    const tbl = document.getElementById("calendar-body");
+    tbl.innerHTML = "";
+
+    let todayDate = new Date();
+    let row = document.createElement("tr");
+    let cell = document.createElement("td");
+
+    cell.className = "date-picker selected";
+    cell.innerHTML = `<span>${todayDate.getDate()}</span>`;
+    row.appendChild(cell);
+    tbl.appendChild(row);
+
+    monthAndYear.innerHTML = months[todayDate.getMonth()] + " " + todayDate.getFullYear();
+}
+
+// Render weekly view
+function renderWeeklyView() {
+    const tbl = document.getElementById("calendar-body");
+    tbl.innerHTML = "";
+
+    let todayDate = new Date();
+    let startOfWeek = new Date(todayDate);
+    startOfWeek.setDate(todayDate.getDate() - todayDate.getDay()); // Go to Sunday
+
+    let row = document.createElement("tr");
+
+    for (let i = 0; i < 7; i++) {
+        let day = new Date(startOfWeek);
+        day.setDate(startOfWeek.getDate() + i);
+
+        let cell = document.createElement("td");
+        cell.className = "date-picker";
+        cell.innerHTML = `<span>${day.getDate()}</span>`;
+        row.appendChild(cell);
+    }
+    
+    tbl.appendChild(row);
+
+    monthAndYear.innerHTML = "Week of " + startOfWeek.toLocaleDateString();
+}
 
 
-function renderWeeklyView() 
-{ 
-	const startOfWeek = new Date(currentDate); 
-	startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); 
-	for (let i = 0; i < 7; i++)  
-	{ 
-		const weekDay = new Date(startOfWeek); 
-		weekDay.setDate(startOfWeek.getDate() + i); 
-		const weekDiv = document.createElement('div'); 
-		weekDiv.className = 'weekly'; 
-		weekDiv.textContent = weekDay.toDateString(); 
-		calendarView.appendChild(weekDiv); 
-	} 
-
-	
 
 
-} 
+
 
 function renderMonthlyView(month, year) {
 	let firstDay = new Date(year, month, 1).getDay();
@@ -264,7 +304,8 @@ function renderMonthlyView(month, year) {
 
 
 // Function to create an event tooltip
-function createEventTooltip(date, month, year) {
+function createEventTooltip(date, month, year) 
+{
 	let tooltip = document.createElement("div");
 	tooltip.className = "event-tooltip";
 	let eventsOnDate = getEventsOnDate(date, month, year);
@@ -282,8 +323,10 @@ function createEventTooltip(date, month, year) {
 }
 
 // Function to get events on a specific date
-function getEventsOnDate(date, month, year) {
-	return events.filter(function (event) {
+function getEventsOnDate(date, month, year) 
+{
+	return events.filter(function (event) 
+	{
 		let eventDate = new Date(event.date);
 		return (
 			eventDate.getDate() === date &&
@@ -294,7 +337,8 @@ function getEventsOnDate(date, month, year) {
 }
 
 // Function to check if there are events on a specific date
-function hasEventOnDate(date, month, year) {
+function hasEventOnDate(date, month, year) 
+{
 	return getEventsOnDate(date, month, year).length > 0;
 }
 

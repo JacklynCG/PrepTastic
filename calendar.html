@@ -130,11 +130,12 @@
 					</button>
 				</div>
 				<div class="button-container-calendar">
-					<select id="viewType">
-						<option value="daily" onchange="renderDailyView()">Daily</option>
-						<option value="weekly" onchange="renderWeeklyView()">Weekly</option>
-						<option value="monthly" onchange="renderMonthyView(month, year)">Monthly</option>"
-					</select>
+					<select id="viewType" onchange="changeView()">
+						<option value="weekly">Weekly</option>
+						<option value="daily">Daily</option>
+						<option value="monthly">Monthly</option>
+					  </select>
+
 				</div>
 				
 				<table class="table-calendar" id="calendar" data-lang="en">

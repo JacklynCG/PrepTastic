@@ -7,95 +7,73 @@ Color codes:
 */
 
 
-.wrapper {
+.wrapper 
+{
 	max-width: 80%;
-	margin: 15px auto;
+	margin-bottom: 80px;
+	justify-items: center;
 }
 
+
 /* Calendar container */
-.container-calendar {
+.container-calendar
+ {
 	background: #ffffff;
 	padding-inline: 15px;
-	max-width: 90%;
-	height:550px;
+	max-width: 100%;
+	height: 700px;
 	margin: auto;
-	box-shadow: #8FB0A9 0px 0px 10px;	
-	display: flex;
+	box-shadow: #8FB0A9 0px 0px 23px 07px;	
+	border-radius: 15px;
+	display: 1fr;
 	justify-content:space-evenly;
 	align-self: center;
 	}
 
 	
 /* Event section styling */
-#event-section {
+#event-section 
+{
 	padding: 10px;
-	background: #f5f5f5;
 	margin: 20px 0;
-	border: 1px solid #ccc;
+	border-radius:  15px;
 }
 
-.container-calendar #left h1 {
+.container-calendar #left h1 
+{
 	color: #8FB0A9;
 	text-align: center;
 	background-color: #f2f2f2;
-	margin: 0;
+	margin: auto;
 	padding: 10px 0;
+	border-radius: 15px;
+	display: flex;	
+	flex-direction: row;
+
 }
 
-.autocomplete {
-	/*the container must be positioned relative:*/
-	position: relative;
-	display: inline-block;
-  }
-  input {
-	border: 1px solid transparent;
-	background-color: #f1f1f1;
-	padding: 10px;
-	font-size: 16px;
-  }
-  input[type=text] {
-	background-color: #f1f1f1;
-	width: 100%;
-  }
-  input[type=submit]
-   {
-	background-color: #8FB0A9;
-	color: #fff;
-  }
-  .autocomplete-items {
-	position: absolute;
-	border: 1px solid #d4d4d4;
-	border-bottom: none;
-	border-top: none;
-	z-index: 99;
-	top: 100%;
-	left: 0;
-	right: 0;
-  }
-  .autocomplete-items div {
-	padding: 10px;
-	cursor: pointer;
-	background-color: #fff;
-	border-bottom: 1px solid #d4d4d4;
-  }
-  .autocomplete-items div:hover {
-	background-color: #e9e9e9;
-  }
-  .autocomplete-active {
-	background-color: #8FB0A9 !important;
-	color: #ffffff;
-  }
 
-
-.daily, .weekly 
+.daily
 {	
 	padding-inline: 15px;
 	margin: 5px;
 	width: auto;
-	height: 100px;
-	display: inline-flex;
-	justify-content:space-evenly;
+	height: 20px;
+	display: flex;
+	justify-content:center;
 }
+
+.weekly 
+{
+	display: flex; 
+	padding-inline: 5px;
+	margin: 2.5px;
+	width: fit-content;
+	height: 100px;
+	justify-content: space-evenly;
+	flex-direction: row;
+}
+
 
 
 #event-section h3 {
@@ -104,31 +82,34 @@ Color codes:
 }
 
 #event-section input[type="date"],
-#event-section input[type="text"] {
+#event-section input[type="text"] 
+{
 	margin: 10px 0;
-	padding: 5px;
+	padding: 7px;
 	width: 80%;
 }
 
-#event-section button {
+#event-section button 
+{
 	background:#D76735;
 	color: white;
 	border: none;
-	padding: 5px 10px;
+	padding: 10px 10px;
 	cursor: pointer;
 }
 
-.event-marker {
+.event-marker 
+{
 	position: relative;
 }
 
-.event-marker::after {
-	content: '';
+.event-marker::after 
+{
+	content: 'Breakfast';
 	display: block;
-	width: 6px;
-	height: 6px;
-	background-color: #D76735;
-	border-radius: 50%;
+	width: 100%;
+	height: 33%;
+	background-color:#8FB0A9;
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -137,7 +118,7 @@ Color codes:
 /* event tooltip styling */
 .event-tooltip {
 	position: absolute;
-	background-color: rgba(232, 234, 232, 0.763);
+	background-color: rgba(232, 234, 232, 0.901);
 	color: rgb(0, 0, 0);
 	padding: 10px;
 	border-radius: 4px;
@@ -150,19 +131,22 @@ Color codes:
 	z-index: 1;
 }
 
-.event-marker:hover .event-tooltip {
+.event-marker:hover .event-tooltip 
+{
 	display: block;
 }
 
 /* Reminder section styling */
-#reminder-section {
+#reminder-section
+ {
 	padding: 10px;
 	background: #f5f5f5;
 	margin: 20px 0;
 	border: 1px solid #ccc;
 }
 
-#reminder-section h3 {
+#reminder-section h3 
+{
 	color: #D76735;
 	font-size: 18px;
 	margin: 0;
@@ -173,13 +157,15 @@ Color codes:
 	padding: 0;
 }
 
-#reminderList li {
+#reminderList li 
+{
 	margin: 5px 0;
 	font-size: 16px;
 }
 
 /* Style for the delete buttons */
-.delete-event {
+.delete-event 
+{
 	background: rgb(237, 19, 19);
 	color: white;
 	border: none;
@@ -190,7 +176,8 @@ Color codes:
 }
 
 /* Buttons in the calendar */
-.button-container-calendar button {
+.button-container-calendar button 
+{
 	cursor: pointer;
 	background: #D76735;
 	color: #fff;
@@ -202,15 +189,17 @@ Color codes:
 /* Calendar table */
 .table-calendar 
 {
-	width: fit-content;
+	height: 63%;
+	width:75%;
 	border-collapse: collapse;
-	width: 100%;
 	flex: flex;
 	justify-content: space-evenly;
+	margin: auto; 
 }
 
 .table-calendar td,
-.table-calendar th {
+.table-calendar th 
+{
 	padding: 5px;
 	border: 1px solid #e2e2e2;
 	text-align: center;
@@ -218,44 +207,39 @@ Color codes:
 }
 
 /* Date picker */
-.date-picker.selected {
+.date-picker.selected 
+{
 	background-color: #f2f2f2;
 	font-weight: bold;
 	outline: 1px dashed #00BCD4;
 }
 
-.date-picker.selected span {
+.date-picker.selected span 
+{
 	border-bottom: 2px solid currentColor;
 }
 
-/* Day-specific styling */
-.date-picker:nth-child(1) {
-	color: red;
-	/* Sunday */
-}
-
-.date-picker:nth-child(6) {
-	color: green;
-	/* Friday */
-}
 
 /* Hover effect for date cells */
-.date-picker:hover {
-	background-color: #F2D8B3;
-	color: white;
+.date-picker:hover 
+{
+	background-color: #f2d8b352;
+	color: #ffffff;
 	cursor: pointer;
 }
 
 /* Header for month and year */
-#monthAndYear {
+#monthAndYear 
+{
 	text-align: center;
-	margin-top: 0;
+	margin-top: 20px;
+	justify-self:center;
 }
 
 /* Navigation buttons */
-.button-container-calendar {
+.button-container-calendar 
+{
 	position: relative;
-	margin-bottom: 1em;
 	overflow: hidden;
 	clear: both;
 }
@@ -269,6 +253,9 @@ Color codes:
 {
 	float: right;
 }
+
+
+
 
 /* Footer styling */
 .footer-container-calendar {
@@ -287,10 +274,65 @@ Color codes:
 	padding: 5px 1em;
 }
 
+/*AUTO COMPLETE FUNCITON TO FILL THE RECIPE SEARCH*/
+.autocomplete {
+	/*the container must be positioned relative:*/
+	position: relative;
+	display: inline-block;
+  }
+  
+  input
+   {
+	border: 1px solid transparent;
+	background-color: #f1f1f1;
+	padding: 10px;
+	font-size: 16px;
+  }
+
+  input[type=text] 
+  {
+	background-color: #f1f1f1;
+	width: 100%;
+  }
+
+  input[type=submit]
+   {
+	background-color: #8FB0A9;
+	color: #fff;
+  }
+  .autocomplete-items 
+  {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	top: 100%;
+	left: 0;
+	right: 0;
+  }
+  .autocomplete-items div 
+  {
+	padding: 10px;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover 
+  {
+	background-color: #e9e9e9;
+  }
+  .autocomplete-active 
+  {
+	background-color: #8FB0A9 !important;
+	color: #ffffff;
+  }
+
+
 
 /****************************/
 /*Weekly FoodCast section*/
-.weekly-foodcast {
+  /*.weekly-foodcast {
 	display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -338,3 +380,4 @@ Color codes:
 	
   }
   
+*/
