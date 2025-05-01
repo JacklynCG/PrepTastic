@@ -50,7 +50,8 @@ function addEvent()
 
 
 // Function to delete an event by ID
-function deleteEvent(eventId) {
+function deleteEvent(eventId) 
+{
 	// Find the index of the event with the given ID
 	let eventIndex =
 		events.findIndex((event) =>
@@ -67,7 +68,8 @@ function deleteEvent(eventId) {
 
 
 // Function to display reminders
-function displayReminders() {
+function displayReminders() 
+{
 	reminderList.innerHTML = "";
 	for (let i = 0; i < events.length; i++) 
 		{
@@ -100,7 +102,8 @@ function displayReminders() {
 }
 
 // Function to generate a range of years for the year select input
-function generate_year_range(start, end) {
+function generate_year_range(start, end) 
+{
 	let years = "";
 	for (let year = start; year <= end; year++) {
 		years += "<option value='" +
@@ -157,7 +160,7 @@ document.getElementById("thead-month").innerHTML = $dataHead;
 monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
-// Function to navigate to the next month
+// Function to navigate to the  month
 function next() {
 	currentYear = currentMonth === 11 ?
 		currentYear + 1 : currentYear;
@@ -197,6 +200,7 @@ function showCalendar(month, year)
 		// Default to monthly view
 		renderMonthlyView(month, year);
 	}
+	
 	displayReminders();	
 }
 
@@ -224,6 +228,24 @@ function renderDailyView() {
 
     cell.className = "date-picker selected";
     cell.innerHTML = `<span>${todayDate.getDate()}</span>`;
+
+    // Check which radio button is selected
+    const selectedMeal = document.querySelector('input[name="mealOpt"]:checked');
+
+    if (hasEventOnDate(todayDate.getDate(), todayDate.getMonth(), todayDate.getFullYear()) && selectedMeal) {
+        // Apply the appropriate event marker class based on the selected meal
+        if (selectedMeal.id === "breakfast") {
+            cell.classList.add("event-marker-breakfast");
+        } else if (selectedMeal.id === "lunch") {
+            cell.classList.add("event-marker-lunch");
+        } else if (selectedMeal.id === "dinner") {
+            cell.classList.add("event-marker-dinner");
+        }
+
+        // Add the event tooltip
+        cell.appendChild(createEventTooltip(todayDate.getDate(), todayDate.getMonth(), todayDate.getFullYear()));
+    }
+
     row.appendChild(cell);
     tbl.appendChild(row);
 
@@ -232,35 +254,37 @@ function renderDailyView() {
 
 // Render weekly view
 function renderWeeklyView() {
-    const tbl = document.getElementById("calendar-body");
-    tbl.innerHTML = "";
+	const tbl = document.getElementById("calendar-body");
+	tbl.innerHTML = "";
 
-    let todayDate = new Date();
-    let startOfWeek = new Date(todayDate);
-    startOfWeek.setDate(todayDate.getDate() - todayDate.getDay()); // Go to Sunday
+	let todayDate = new Date();
+	let startOfWeek = new Date(todayDate);
+	startOfWeek.setDate(todayDate.getDate() - todayDate.getDay()); // Go to Sunday
 
-    let row = document.createElement("tr");
+	let row = document.createElement("tr");
 
-    for (let i = 0; i < 7; i++) {
-        let day = new Date(startOfWeek);
-        day.setDate(startOfWeek.getDate() + i);
+	for (let i = 0; i < 7; i++) {
+		let day = new Date(startOfWeek);
+		day.setDate(startOfWeek.getDate() + i);
 
-        let cell = document.createElement("td");
-        cell.className = "date-picker";
-        cell.innerHTML = `<span>${day.getDate()}</span>`;
-        row.appendChild(cell);
-    }
-    
-    tbl.appendChild(row);
+		let cell = document.createElement("td");
+		cell.className = "date-picker";
+		cell.innerHTML = `<span>${day.getDate()}</span>`;
 
-    monthAndYear.innerHTML = "Week of " + startOfWeek.toLocaleDateString();
+		if (hasEventOnDate(day.getDate(), day.getMonth(), day.getFullYear())) {
+			cell.classList.add("event-marker");
+			cell.appendChild(createEventTooltip(day.getDate(), day.getMonth(), day.getFullYear()));
+		}
+
+		row.appendChild(cell);
+	}
+
+	tbl.appendChild(row);
+
+	monthAndYear.innerHTML = "Week of " + startOfWeek.toLocaleDateString();
 }
 
-
-
-
-
-
+// Render monthly view
 function renderMonthlyView(month, year) {
 	let firstDay = new Date(year, month, 1).getDay();
 	let date = 1;
@@ -302,7 +326,6 @@ function renderMonthlyView(month, year) {
 	}
 }
 
-
 // Function to create an event tooltip
 function createEventTooltip(date, month, year) 
 {
@@ -319,6 +342,8 @@ function createEventTooltip(date, month, year)
 		eventElement.innerHTML = eventText;
 		tooltip.appendChild(eventElement);
 	}
+
+	
 	return tooltip;
 }
 
@@ -335,6 +360,23 @@ function getEventsOnDate(date, month, year)
 		);
 	});
 }
+
+
+
+//MUST BE IN INDIVIDUALLY RENDERED VIEW
+document.querySelectorAll('input[name="mealOpt"]').forEach(radio => {
+    radio.addEventListener('change', mealType);
+});
+
+function mealType() {
+    const selectedMeal = document.querySelector('input[name="mealOpt"]:checked');
+    if (selectedMeal) {
+        console.log(`Selected meal type: ${selectedMeal.value}`);
+        // Add your logic here for handling the selected meal type
+    }
+}
+
+
 
 // Function to check if there are events on a specific date
 function hasEventOnDate(date, month, year) 
@@ -356,10 +398,11 @@ document.getElementById("addMeal").addEventListener("click", function ()
 	let title = eventTitleInput.value;
 	let description = document.getElementById("recipeLink" || recipeID).value; // Use recipe link as description
 
-	if (date && title) {
+	if (date && title)
+		 {
 		let eventId = eventIdCounter++;
-
-		events.push({
+		events.push(
+			{
 			id: eventId,
 			date: date,
 			title: title,

@@ -12,6 +12,8 @@ Color codes:
 	max-width: 80%;
 	margin-bottom: 80px;
 	justify-items: center;
+	align-self: center;
+	margin: auto;
 }
 
 
@@ -103,17 +105,47 @@ Color codes:
 	position: relative;
 }
 
-.event-marker::after 
+.event-marker::before
 {
 	content: 'Breakfast';
 	display: block;
 	width: 100%;
-	height: 33%;
-	background-color:#8FB0A9;
+	height: 25%;
+	background-color:#8fb0a95e;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	font-size: small;
+}
+
+
+.event-marker::mid
+{
+	content: 'Lunch';
+	display: block;
+	width: 100%;
+	height: 25%;
+	background-color:#8fb0a9a3;
+	position: absolute;
+	text-align: center;
+	top: 100px;
+	left: 0;
+}
+
+
+.event-marker::after 
+{
+	content: 'Dinner';
+	display: block;
+	width: 100%;
+	height: 25%;
+	background-color:#8fb0a9;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 }
+
+
 
 /* event tooltip styling */
 .event-tooltip {
@@ -226,6 +258,7 @@ Color codes:
 	background-color: #f2d8b352;
 	color: #ffffff;
 	cursor: pointer;
+	color: #00BCD4;
 }
 
 /* Header for month and year */
@@ -329,55 +362,16 @@ Color codes:
   }
 
 
-
-/****************************/
-/*Weekly FoodCast section*/
-  /*.weekly-foodcast {
+.radio-group
+{
 	display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
-    gap: 1rem;
+	gap: 15px;
+	align-items: baseline;
+	align-items: space-between;
+}
 
-	width: 80%;
-	margin: auto;
-	
-  }
-  
-  .foodcard-row{
-	display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
+.radio-items
+{
+	padding-right: 150px;
+}
 
-  .foodcard {
-    width: 150px;
-    height: 150px;
-	background-color: #F2D8B3;
-	border-radius: 12px;
-	padding: 10px;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .foodcard:hover {
-	transform: scale(1.05);
-  }
-  
-  #page-section .foodcard h3 {
-	margin: 0px;
-	margin-bottom: 10px;
-	color: #D76735;
-	font-size: 16px;
-	text-align: center;
-  }
-
-  
-  .foodcard p {
-	color: #D76735;
-	font-size: 12px;
-	text-align: center;
-	
-  }
-  
-*/

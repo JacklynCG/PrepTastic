@@ -6,7 +6,7 @@ const recipeNames =
    }, 
    {
       name: "The Best Chocolate Chip Cookie Recipe Ever",
-      link: "../recipePull.php? name=The Best Chocolate Chip Cookie Recipe Ever",
+      link: null,
     },
 
     {
@@ -56,18 +56,21 @@ const recipeNames =
 ];
 
 
-async function fetchRecipies(recipeName) {
- try {
-   const response = await fetch('../../recipePull.php', recipeName);
-   if (!response.ok) 
-      {
-      throw new Error('Failed to fetch recipes');
+async function fetchRecipies(recipeName) 
+{
+   try {
+      const response = await fetch(`../recipePull.php?name=${encodeURIComponent(recipeName)}`);
+      if (response.ok) {
+         const link = await response.text();
+         if (link) {
+            window.open(link, '_blank');
+         } else {
+            console.error("Recipe not found.");
+         }
+      } else {
+         console.error("Failed to fetch the recipe.");
+      }
+   } catch (error) {
+      console.error("An error occurred while fetching the recipe:", error);
    }
-   const recipe = await response.json();
-   return recipeLink;
- }  
- catch (error) {
-   console.error('Error fetching recipes:', error);
-   return null;
- }
 }

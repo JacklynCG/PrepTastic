@@ -1,27 +1,29 @@
 <?php
-$servername="localhost";
-$username="root";
-$password="";
-$database ="recipes";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "recipes";
 
-//create connection
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
-//catch connection errors
-if($conn->connect_error)
-{
+// Catch connection errors
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 
 function getRecipe($name)
 {
     global $conn;
-    $query = "SELECT link FROM recipe WHERE name = 'recipeName'" ;
-    $result = $conn->query($query);
-    return $result->fetch_assoc()['link'];
+    // Use prepared statements to prevent SQL injection
+    $stmt = $conn->prepare("SELECT link FROM recipe WHERE name = ?");
+    $stmt->bind_param("s", $name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row ? $row['link'] : null;
 }
 
 $conn->close();
-
 ?>

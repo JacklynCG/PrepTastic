@@ -12,15 +12,18 @@
 </head>
 
 
-<body>
+
 
   <!--HEADER-->
+  <header class="header">
   <div class="header">
 	<a href="./calendar.html">
     <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
 	</a>
   </div>
+</header>
 
+<body>
   <div class = "navbar">
     <ul>
       <li><a href="./help.html">Help</a></li>
@@ -31,70 +34,11 @@
     </ul>
   </div>
 
+
   <section id="header-title">
     <h1>Calendar</h1>
 	<hr>
   </section>
-
-  <!--<section id="page-section">
-	<h2>Welcome!</h2>
-	<h3>Weekly Foodcast</h3>  Idk, like forecast...get et?
-
-	<div class="weekly-foodcast">
-		<div class="foodcard-row">
-			<div class="foodcard">
-				<h3>Sunday</h3>
-				<p><strong>Breakfast: </strong> Recipe Title</p>
-				<p><strong>Lunch: </strong>Recipe Title</p>
-				<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-
-			<div class="foodcard">
-				<h3>Monday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-
-			<div class="foodcard">
-				<h3>Tuesday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-
-			<div class="foodcard">
-				<h3>Wednesday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-
-			<div class="foodcard">
-				<h3>Thursday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-		</div>
-
-		<div class="foodcard-row">
-			<div class="foodcard">
-				<h3>Friday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-
-			<div class="foodcard">
-				<h3>Saturday</h3>
-					<p><strong>Breakfast: </strong> Recipe Title</p>
-					<p><strong>Lunch: </strong>Recipe Title</p>
-					<p><strong>Dinner: </strong>Recipe Title</p>
-			</div>
-		</div>
-	</div>
-  </section>-->
   
 	<!-- Main wrapper for the calendar application -->
   <section id="page-section">
@@ -102,12 +46,26 @@
 	<div class="wrapper">
         <div id="event-section">
             <h3>Add A meal</h3>
-            <input type="date" id="eventDate">
+
+		<form>
+		<div class="radio-group">
+			<!--RADIO BUTTONS - SEPERATES EVENT TOOLTIPS-->
+			<input type="radio" id="breakfast" name="mealOpt" value="Breakfast">
+			<label for="breakfast">Breakfast</label>
+			<input type="radio" id="lunch" name="mealOpt" value="Lunch">
+			<label for="Lunch">Lunch</label>
+			<input type="radio" id="dinner" name="mealOpt" value="Dinner">
+			<label for="Dinner">Dinner</label>
+		</div>           
+		 <input type="date" id="eventDate">
+		</form>
+
 			<form autocomplete="off">
 				<div class="autocomplete">
 					<input id="dbRecipe" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
 				</div>
 			</form>
+
 			<input type="text" id="eventTitle" placeholder="Recipe Name">
             <input type="text" id="recipeLink" placeholder="Recipe Link">
 			

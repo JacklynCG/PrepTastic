@@ -19,7 +19,8 @@ LOGO COLOR CODES:
 /*Main Body Structure*/
 
 
-html, body {
+html, body
+{
     height: 100%;
     width: 100%;
     margin: 0;
@@ -29,20 +30,23 @@ html, body {
   }
 
 body
-{
+{   
+    background-image: url(../images/background2.jpeg);
     margin: auto;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
     color: #333;
-    min-height: 100vh;
-    
+    min-height: 100%;
 }
+
 
   
 
-#page-section{
+#page-section
+{
+    background-color: ;
     width: 80%;
     margin: auto;
+    padding: 10px 10px 10px 10px;
 }
 
 #page-section h2 {
@@ -90,17 +94,19 @@ body
 
 /*navbar/Header*/
 
-.navbar{
+.navbar
+{
 background-color: #D76735;
 width: 100%;
 margin-bottom: 40px;
-
+background-image: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
 }
 
-.navbar ul {
+.navbar ul 
+{
 list-style-type: none;
 margin: 0;
 padding: 0;
@@ -124,23 +130,28 @@ text-decoration: none;
     color: #D76735;
 }
 
+header
+{
+  background-color: white;
+}
 
-.header img {
+.header img 
+{
 display: block;
 margin: auto;
 margin-bottom: 10px;
 margin-top: 10px;
 width: 50%;
-
 height: 75px;
 width:auto;
 }
 
-#header-title {
-    text-align: center;
-    color: #54a496; 
-    font-size: 40px;
-    margin-top: 50px;
+#header-title 
+{
+  text-align: center;
+  color: #54a496; 
+  font-size: 40px;
+  margin-top: 50px;
 }
 
 
