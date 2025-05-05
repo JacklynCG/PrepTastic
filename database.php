@@ -1,4 +1,3 @@
-<!--The connection page-->
 <?php
 
 $db_server = "localhost";
