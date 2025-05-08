@@ -103,46 +103,21 @@ Color codes:
 .event-marker 
 {
 	position: relative;
+
 }
 
 .event-marker::before
 {
-	content: 'Breakfast';
-	display: block;
+	content: '';
+	display:flex;
 	width: 100%;
 	height: 25%;
 	background-color:#8fb0a95e;
-	position: absolute;
 	top: 35px;
 	left: 0;
 	font-size: small;
-}
-
-
-.event-marker::mid
-{
-	content: 'Lunch';
-	display: block;
-	width: 100%;
-	height: 25%;
-	background-color:#8fb0a9a3;
-	position: absolute;
-	text-align: center;
-	top: 100px;
-	left: 0;
-}
-
-
-.event-marker::after 
-{
-	content: 'Dinner';
-	display: block;
-	width: 100%;
-	height: 25%;
-	background-color:#8fb0a9;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	border-radius: 95%;
+	vertical-align: center ;
 }
 
 
@@ -225,7 +200,7 @@ Color codes:
 	width:75%;
 	border-collapse: collapse;
 	flex: flex;
-	justify-content: space-evenly;
+	justify-content:space-evenly;
 	margin: auto; 
 }
 
@@ -233,9 +208,10 @@ Color codes:
 .table-calendar th 
 {
 	padding: 5px;
-	border: 1px solid #e2e2e2;
+	border: 1.5px solid #d1d1d1;
 	text-align: center;
-	vertical-align: top;
+	align-items: center;
+	vertical-align: center;
 }
 
 /* Date picker */

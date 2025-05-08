@@ -1,4 +1,5 @@
 // calendar.js
+
 let viewType = "weekly";  // default view
 let currentDate = new Date();  // needed for day/week view
 let calendarView = document.getElementById("calendar-body"); // make sure this exists in your HTML
@@ -20,35 +21,34 @@ let reminderList =
 let eventIdCounter = 1;
 
 // Function to add events
-function addEvent() 
-{
-	let date = eventDateInput.value;
-	let title = eventTitleInput.value;
-	let description = eventDescriptionInput.value;
+function addEvent() {
+    const date = document.getElementById("eventDate").value;
+    const mealType = document.querySelector('input[name="mealType"]:checked').value;
+    const recipeLink = document.getElementById("mealInput").value;
 
-	if (date && title) {
-		// Create a unique event ID
-		let eventId = eventIdCounter++;
+    if (!date || !mealType || !recipeLink) {
+        alert("Please fill in all fields.");
+        return;
+    }
 
-		events.push(
-			{
-				id: eventId, 
-				date: date,
-				title: title,
-				description: description
-			}
-		);
-
-		// Refresh all calendar views to reflect the new event
-		showCalendar(currentMonth, currentYear);
-		eventDateInput.value = "";
-		eventTitleInput.value = "";
-		eventDescriptionInput.value = "";
-		displayReminders();
-	}
+    // Send data to the PHP file
+    fetch("plannedMeals.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `recipeName=${encodeURIComponent(mealType)}&link=${encodeURIComponent(recipeLink)}&date=${encodeURIComponent(date)}`,
+    })
+        .then((response) => response.text())
+        .then((data) => {
+            console.log(data); // Log the response from the PHP file
+            alert("Meal added successfully!");
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("Failed to add meal.");
+        });
 }
-
-
 // Function to delete an event by ID
 function deleteEvent(eventId) 
 {

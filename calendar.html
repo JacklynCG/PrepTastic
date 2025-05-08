@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="./css/calendar.css">
-	<link rel="stylesheet" href="css/ingredients.css">
-    <link rel="stylesheet" href="./css/global.css">
-	<title>Dynamic Calendar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Meal Calendar</title>
+
+
+  <!-- FullCalendar v6 -->
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/global.css">
+
+<!-- FullCalendar CSS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
+<!-- jQuery (for Bootstrap modal if needed) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <style>
+    #calendar {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+  </style>
 </head>
 
-
-
-
-  <!--HEADER-->
-  <header class="header">
-  <div class="header">
-	<a href="./calendar.html">
-    <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
-	</a>
-  </div>
-</header>
-
 <body>
+
+  <header class="header">
+    <div class="header">
+    <a href="./calendar.html">
+      <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
+    </a>
+    </div>
+  </header>
+
+  
   <div class = "navbar">
     <ul>
       <li><a href="./help.html">Help</a></li>
@@ -36,148 +55,107 @@
 
 
   <section id="header-title">
-    <h1>Calendar</h1>
-	<hr>
+    <h1 class="text-center mt-4"  style = "color: #54a496";>Meal Calendar</h1>
   </section>
+
   
-	<!-- Main wrapper for the calendar application -->
-  <section id="page-section">
-	
-	<div class="wrapper">
-        <div id="event-section">
-            <h3>Add A meal</h3>
+  <div class="container mt-4">
+  <div id="calendar"></div>
+</div>
 
-		<form>
-		<div class="radio-group">
-			<!--RADIO BUTTONS - SEPERATES EVENT TOOLTIPS-->
-			<input type="radio" id="breakfast" name="mealOpt" value="Breakfast">
-			<label for="breakfast">Breakfast</label>
-			<input type="radio" id="lunch" name="mealOpt" value="Lunch">
-			<label for="Lunch">Lunch</label>
-			<input type="radio" id="dinner" name="mealOpt" value="Dinner">
-			<label for="Dinner">Dinner</label>
-		</div>           
-		 <input type="date" id="eventDate">
-		</form>
-
-			<form autocomplete="off">
-				<div class="autocomplete">
-					<input id="dbRecipe" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
-				</div>
-			</form>
-
-			<input type="text" id="eventTitle" placeholder="Recipe Name">
-            <input type="text" id="recipeLink" placeholder="Recipe Link">
-			
-            <button id="addMeal" onclick="addMeal()">
-                Add Meal
-            </button>
+  <!-- Modal for adding events -->
+  <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Event</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
+        <div class="modal-body">
+          <input type="text" id="event_name" class="form-control mb-2" placeholder="Event Name" />
+          <input type="date" id="event_start_date" class="form-control mb-2" />
+          <input type="date" id="event_end_date" class="form-control" />
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="saveEventBtn">Save Event</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-			<div class="container-calendar">
-				<h3 id="monthAndYear"></h3>
-				<div class="button-container-calendar">
-					<button id="previous"
-							onclick="previous()">
-						‹
-					</button>
-					<button id="next"
-							onclick="next()">
-						›
-					</button>
-				</div>
-				<div class="button-container-calendar">
-					<select id="viewType" onchange="changeView()">
-						<option value="weekly">Weekly</option>
-						<option value="daily">Daily</option>
-						<option value="monthly">Monthly</option>
-					  </select>
-
-				</div>
-				
-				<table class="table-calendar" id="calendar" data-lang="en">
-					<thead id="thead-month"></thead>
-					<!-- Table body for displaying the calendar -->
-					<tbody id="calendar-body"></tbody>
-				</table>
-				<div class="footer-container-calendar">
-					<label for="month">Jump To: </label>
-					<!-- Dropdowns to select a specific month and year -->
-					<select id="month" onchange="jump()">
-						<option value=0>Jan</option>
-						<option value=1>Feb</option>
-						<option value=2>Mar</option>
-						<option value=3>Apr</option>
-						<option value=4>May</option>
-						<option value=5>Jun</option>
-						<option value=6>Jul</option>
-						<option value=7>Aug</option>
-						<option value=8>Sep</option>
-						<option value=9>Oct</option>
-						<option value=10>Nov</option>
-						<option value=11>Dec</option>
-					</select>
-					<!-- Dropdown to select a specific year -->
-					<select id="year" onchange="jump()"></select>	
-							
-					</div>
-			</div>
-		</div>
-	</section>
-
-		<hr>
-
-		<section id="page-section">
-			<h2>Groceries</h2>
-			<h3>Ingredients Still Needed</h3>
-
-			  <div class="ingredient-container" id="ingredient-container">
-			  </div>
-			  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
-			  <button id="add-ingredient-btn">Add Ingredient</button>
-		
-		</section>
-		<hr>
-
-		
-<section id="page-section">		
-	<h2>Planned Meals</h2>
-        <div id="reminder-section">
-            <!-- List to display reminders -->
-            <ul id="reminderList">
-                <li data-event-id="1">
-                    <strong>Event Title</strong>
-                    - Event Description on Event Date
-                    <button class="delete-event"
-                        onclick="deleteEvent(1)">
-                        Delete
-                    </button>
-                </li>
-            </ul>
-        </div>
-</section>
-
-	<br>
-	<br>
-<footer class="footer">
-	<div class="footer-content">
-	  <p><strong>Feel free to contact us with any questions!</strong></p>
-	  <p>Phone number: 000-000-0000</p>
-	  <p>Email: <a href="mailto:preptastic@fakeEmail.com">preptastic@fakeEmail.com</a></p>
-	  <p>Instagram: <a href="fakelink.html">@preptasticmealprep</a></p>
-	</div>
-	<div class="footer-logo">
-	  <img src="./images/logo/small-logo-transparent-png.png" alt="Small Preptastic Icon">
-	</div>
-  </footer>
-
-	<!-- Include the JavaScript file for the calendar functionality -->
-
-	<script src="./js/recipeList.js"></script>
-	<script src="./js/autocomplete.js"></script>
-	<script src="./js/calendar.js"></script>
-	
-
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', // Default view
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay' // View toggles
+        },
+        themeSystem: 'bootstrap5',
+        selectable: true,
+        events: function (fetchInfo, successCallback, failureCallback) {
+          fetch('display_event.php')
+            .then(response => response.json())
+            .then(data => {
+              if (data.status) {
+                successCallback(data.data);
+              } else {
+                alert(data.msg || "Failed to load events.");
+              }
+            })
+            .catch(error => {
+              console.error('Error fetching events:', error);
+              failureCallback(error);
+            });
+        },
+        select: function (info) {
+          $('#event_start_date').val(info.startStr);
+          $('#event_end_date').val(info.endStr);
+          $('#event_entry_modal').modal('show');
+        }
+      });
+  
+      calendar.render();
+  
+      // Save event on button click
+      $('#saveEventBtn').on('click', function () {
+        const title = $('#event_name').val();
+        const start = $('#event_start_date').val();
+        const end = $('#event_end_date').val();
+  
+        if (!title || !start || !end) {
+          alert('Please fill out all fields.');
+          return;
+        }
+  
+        $.ajax({
+          url: 'saved_event.php',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+            event_name: title,
+            event_start_date: start,
+            event_end_date: end
+          },
+          success: function (response) {
+            if (response.status) {
+              $('#event_entry_modal').modal('hide');
+              calendar.refetchEvents();
+              alert(response.msg);
+            } else {
+              alert(response.msg);
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error('AJAX error:', xhr.responseText);
+            alert('Something went wrong while saving the event.');
+          }
+        });
+      });
+    });
+  </script>
+  
 </body>
 </html>

@@ -11,19 +11,10 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-function getRecipe($name)
-{
-    global $conn;
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT link FROM recipe WHERE name = ?");
-    $stmt->bind_param("s", $name);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $stmt->close();
-    return $row ? $row['link'] : null;
-}
-
+header('Content-Type: application/json');
+$pdo = new PDO("sqlite:recipes.db"); // Adjust path if needed
+$query = $pdo->query("SELECT name, link FROM recipes");
+$recipes = $query->fetchAll(PDO::FETCH_ASSOC);
+echo json_encode($recipes);
 $conn->close();
 ?>
