@@ -12,6 +12,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="./css/global.css">
 
+
 <!-- FullCalendar CSS -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 
@@ -23,11 +24,13 @@
 
 <!-- FullCalendar JS -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<link rel="stylesheet" href="./css/calendar.css">
 
   <style>
     #calendar {
       max-width: 900px;
       margin: 40px auto;
+
     }
   </style>
 </head>
@@ -60,7 +63,7 @@
 
   
   <div class="container mt-4">
-  <div id="calendar"></div>
+  <div id="calendar" class="container-calendar"></div>
 </div>
 
   <!-- Modal for adding events -->
@@ -68,12 +71,23 @@
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add New Event</h5>
+          <h5 class="modal-title">Plan a Meal</h5>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <input type="text" id="event_name" class="form-control mb-2" placeholder="Event Name" />
-          <input type="date" id="event_start_date" class="form-control mb-2" />
+
+          <form autocomplete="off">
+            <form autocomplete="off">
+              <div class="autocomplete">
+                <input id="dbRecipe" type="text" name="recipeID" placeholder="Recipe from Preptastic Database" required>
+              </div>
+            </form>
+      
+            <input type="text" id="eventTitle" placeholder="Recipe Name">
+                  <input type="text" id="recipeLink" placeholder="Recipe Link">
+            <input type="date" id="event_start_date" class="form-control mb-2" />
+
+
           <input type="date" id="event_end_date" class="form-control" />
         </div>
         <div class="modal-footer">
@@ -121,7 +135,7 @@
   
       // Save event on button click
       $('#saveEventBtn').on('click', function () {
-        const title = $('#event_name').val();
+        const title = $('#eventTitle').val();        
         const start = $('#event_start_date').val();
         const end = $('#event_end_date').val();
   
@@ -157,5 +171,38 @@
     });
   </script>
   
+
+  <!--Contact Infomation-->
+  <h1 style = "padding-left: 20px;">Contact Information</h1>
+  <div class = "contact">
+    <p>
+      Feel free to contact us with any questions!<br><br>
+      Phone number: 000-000-0000<br><br>
+      Email: preptastic@gmail.com<br><br>
+      Instagram: @preptasticmealprep
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.266172865597!2d-91.50619472376225!3d44.79576387107104!2m3!
+    1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f8bda1c1f99121%3A0x8e4f27fb702ea176!2sUniversity%20of%20Wisconsin-Eau%20Claire!
+    5e0!3m2!1sen!2sus!4v1745274455541!5m2!1sen!2sus" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade" padding-bottom = "10px"></iframe>
+  </div>
+
+  <br>
+  <br>
+  <footer class="footer">
+    <div class="footer-content">
+      <p><strong>Feel free to contact us with any questions!</strong></p>
+      <p>Phone number: 000-000-0000</p>
+      <p>Email: <a href="mailto:preptastic@fakeEmail.com">preptastic@fakeEmail.com</a></p>
+      <p>Instagram: <a href="fakelink.html">@preptasticmealprep</a></p>
+    </div>
+    <div class="footer-logo">
+      <img src="./images/logo/small-logo-transparent-png.png" alt="Small Preptastic Icon">
+    </div>
+  </footer>
+<br><br>
+
+  <script src="./js/recipeList.js"></script>
+  <script src="./js/autocomplete.js"></script>
 </body>
 </html>

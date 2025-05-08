@@ -36,7 +36,7 @@ if ($conn->connect_error) {
 }
 
 // Insert event
-$stmt = $conn->prepare("INSERT INTO events (event_name, event_start_date, event_end_date) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO event_calendar_master (event_name, event_start_date, event_end_date) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $event_name, $start_date, $end_date);
 
 if ($stmt->execute()) {

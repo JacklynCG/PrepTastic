@@ -1,22 +1,3 @@
-/*
-Color codes: 
-    #F2D8B3 - Peachy Beige
-    #FBD266 - Yellow
-    #8FB0A9 - Light Teal
-    #D76735 - Burnt Orange
-*/
-
-
-.wrapper 
-{
-	max-width: 80%;
-	margin-bottom: 80px;
-	justify-items: center;
-	align-self: center;
-	margin: auto;
-}
-
-
 /* Calendar container */
 .container-calendar
  {
@@ -24,7 +5,8 @@ Color codes:
 	padding-inline: 15px;
 	max-width: 100%;
 	height: 700px;
-	margin: auto;
+	padding-top: 25px;
+	padding-bottom: 25px;
 	box-shadow: #8FB0A9 0px 0px 23px 07px;	
 	border-radius: 15px;
 	display: 1fr;
@@ -32,322 +14,29 @@ Color codes:
 	align-self: center;
 	}
 
+	.autocomplete-items {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		border-bottom: none;
+		border-top: none;
+		z-index: 99;
+		top: 100%;
+		left: 0;
+		right: 0;
+	}
 	
-/* Event section styling */
-#event-section 
-{
-	padding: 10px;
-	margin: 20px 0;
-	border-radius:  15px;
-}
-
-.container-calendar #left h1 
-{
-	color: #8FB0A9;
-	text-align: center;
-	background-color: #f2f2f2;
-	margin: auto;
-	padding: 10px 0;
-	border-radius: 15px;
-	display: flex;	
-	flex-direction: row;
-
-}
-
-
-.daily
-{	
-	padding-inline: 15px;
-	margin: 5px;
-	width: auto;
-	height: 20px;
-	display: flex;
-	justify-content:center;
-}
-
-.weekly 
-{
-	display: flex; 
-	padding-inline: 5px;
-	margin: 2.5px;
-	width: fit-content;
-	height: 100px;
-	justify-content: space-evenly;
-	flex-direction: row;
-}
-
-
-
-#event-section h3 {
-	color:#D76735;
-	margin: 0;
-}
-
-#event-section input[type="date"],
-#event-section input[type="text"] 
-{
-	margin: 10px 0;
-	padding: 7px;
-	width: 80%;
-}
-
-#event-section button 
-{
-	background:#D76735;
-	color: white;
-	border: none;
-	padding: 10px 10px;
-	cursor: pointer;
-}
-
-.event-marker 
-{
-	position: relative;
-
-}
-
-.event-marker::before
-{
-	content: '';
-	display:flex;
-	width: 100%;
-	height: 25%;
-	background-color:#8fb0a95e;
-	top: 35px;
-	left: 0;
-	font-size: small;
-	border-radius: 95%;
-	vertical-align: center ;
-}
-
-
-
-/* event tooltip styling */
-.event-tooltip {
-	position: absolute;
-	background-color: rgba(232, 234, 232, 0.901);
-	color: rgb(0, 0, 0);
-	padding: 10px;
-	border-radius: 4px;
-	bottom: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-	display: none;
-	transition: all 0.3s;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}
-
-.event-marker:hover .event-tooltip 
-{
-	display: block;
-}
-
-/* Reminder section styling */
-#reminder-section
- {
-	padding: 10px;
-	background: #f5f5f5;
-	margin: 20px 0;
-	border: 1px solid #ccc;
-}
-
-#reminder-section h3 
-{
-	color: #D76735;
-	font-size: 18px;
-	margin: 0;
-}
-
-#reminderList {
-	list-style: none;
-	padding: 0;
-}
-
-#reminderList li 
-{
-	margin: 5px 0;
-	font-size: 16px;
-}
-
-/* Style for the delete buttons */
-.delete-event 
-{
-	background: rgb(237, 19, 19);
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	cursor: pointer;
-	margin-left: 10px;
-	align-items: right;
-}
-
-/* Buttons in the calendar */
-.button-container-calendar button 
-{
-	cursor: pointer;
-	background: #D76735;
-	color: #fff;
-	border: 1px solid #D76735;
-	border-radius: 4px;
-	padding: 5px 10px;
-}
-
-/* Calendar table */
-.table-calendar 
-{
-	height: 63%;
-	width:75%;
-	border-collapse: collapse;
-	flex: flex;
-	justify-content:space-evenly;
-	margin: auto; 
-}
-
-.table-calendar td,
-.table-calendar th 
-{
-	padding: 5px;
-	border: 1.5px solid #d1d1d1;
-	text-align: center;
-	align-items: center;
-	vertical-align: center;
-}
-
-/* Date picker */
-.date-picker.selected 
-{
-	background-color: #f2f2f2;
-	font-weight: bold;
-	outline: 1px dashed #00BCD4;
-}
-
-.date-picker.selected span 
-{
-	border-bottom: 2px solid currentColor;
-}
-
-
-/* Hover effect for date cells */
-.date-picker:hover 
-{
-	background-color: #f2d8b352;
-	color: #ffffff;
-	cursor: pointer;
-	color: #00BCD4;
-}
-
-/* Header for month and year */
-#monthAndYear 
-{
-	text-align: center;
-	margin-top: 20px;
-	justify-self:center;
-}
-
-/* Navigation buttons */
-.button-container-calendar 
-{
-	position: relative;
-	overflow: hidden;
-	clear: both;
-}
-
-#previous 
-{
-	float: left;
-}
-
-#next 
-{
-	float: right;
-}
-
-
-
-
-/* Footer styling */
-.footer-container-calendar {
-	margin-top: 1em;
-	border-top: 1px solid #dadada;
-	padding: 10px 0;
-}
-
-.footer-container-calendar select 
-{
-	cursor: pointer;
-	background: #ffffff;
-	color: #585858;
-	border: 1px solid #bfc5c5;
-	border-radius: 3px;
-	padding: 5px 1em;
-}
-
-/*AUTO COMPLETE FUNCITON TO FILL THE RECIPE SEARCH*/
-.autocomplete {
-	/*the container must be positioned relative:*/
-	position: relative;
-	display: inline-block;
-  }
-  
-  input
-   {
-	border: 1px solid transparent;
-	background-color: #f1f1f1;
-	padding: 10px;
-	font-size: 16px;
-  }
-
-  input[type=text] 
-  {
-	background-color: #f1f1f1;
-	width: 100%;
-  }
-
-  input[type=submit]
-   {
-	background-color: #8FB0A9;
-	color: #fff;
-  }
-  .autocomplete-items 
-  {
-	position: absolute;
-	border: 1px solid #d4d4d4;
-	border-bottom: none;
-	border-top: none;
-	z-index: 99;
-	top: 100%;
-	left: 0;
-	right: 0;
-  }
-  .autocomplete-items div 
-  {
-	padding: 10px;
-	cursor: pointer;
-	background-color: #fff;
-	border-bottom: 1px solid #d4d4d4;
-  }
-  .autocomplete-items div:hover 
-  {
-	background-color: #e9e9e9;
-  }
-  .autocomplete-active 
-  {
-	background-color: #8FB0A9 !important;
-	color: #ffffff;
-  }
-
-
-.radio-group
-{
-	display: flex;
-	gap: 15px;
-	align-items: baseline;
-	align-items: space-between;
-}
-
-.radio-items
-{
-	padding-right: 150px;
-}
-
+	.autocomplete-items div {
+		padding: 10px;
+		cursor: pointer;
+		background-color: #fff;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	
+	.autocomplete-items div:hover {
+		background-color: #e9e9e9;
+	}
+	
+	.autocomplete-active {
+		background-color: DodgerBlue !important;
+		color: #ffffff;
+	}
