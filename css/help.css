@@ -14,6 +14,7 @@
     margin-right: 3%;
     min-height: 50vh;
     padding: 20px 9% 80px;
+    overflow: auto;
 }
 
 .contact {
@@ -54,7 +55,7 @@ p {
 }
 
 .accordion-content {
-    display: none;
+    /* display: none; */
     max-height: 0;
     overflow: hidden;
     padding: 0 10px;  /* Adds padding when open */
@@ -63,11 +64,11 @@ p {
     color: #54a496;
 }
 
-.accordion-content.active {
+/* .accordion-content.active {
     display: block; 
     padding: 10px; 
     max-height: 1000px;
-}
+} */
 
 .accordion-header:hover{
     background-color:#d2d2d2;

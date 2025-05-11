@@ -42,8 +42,8 @@
 
     <!--Basic Ingredient Feature that allows user to continously add ingredients to the list-->
     <form action="./ingredients.php" method="post">
-      <input type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name">
-      <input type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed">
+      <input type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name" maxlength = 50 required>
+      <input type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed" maxlength = 50 required>
       <button type="submit" id="add-ingredient-btn">Add Ingredient</button>
     </form>
 

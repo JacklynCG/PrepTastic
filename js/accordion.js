@@ -22,7 +22,7 @@ accordionHeaders.forEach((header) => {
             accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
         } else {
 
-            accordionContent.style.maxHeight = "0";
+            accordionContent.style.maxHeight = null;
         }
     });
 });

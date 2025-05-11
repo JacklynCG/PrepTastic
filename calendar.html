@@ -49,7 +49,7 @@
   <div class = "navbar">
     <ul>
       <li><a href="./help.html">Help</a></li>
-      <li><a href="./ingredients.html">Ingredients</a></li>
+      <li><a href="./ingredients.php">Ingredients</a></li>
       <li><a href="./recipes.html">Recipes</a></li>
       <li><a href="./calendar.html">Calendar</a></li>
       <li><a href="./feed.html">Feed</a></li>
@@ -171,21 +171,51 @@
     });
   </script>
   
+  <section id="page-section">
+    <h2>Groceries</h2>
+    <h3>Ingredients Still Needed</h3>
 
-  <!--Contact Infomation-->
-  <h1 style = "padding-left: 20px;">Contact Information</h1>
-  <div class = "contact">
-    <p>
-      Feel free to contact us with any questions!<br><br>
-      Phone number: 000-000-0000<br><br>
-      Email: preptastic@gmail.com<br><br>
-      Instagram: @preptasticmealprep
-    </p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.266172865597!2d-91.50619472376225!3d44.79576387107104!2m3!
-    1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f8bda1c1f99121%3A0x8e4f27fb702ea176!2sUniversity%20of%20Wisconsin-Eau%20Claire!
-    5e0!3m2!1sen!2sus!4v1745274455541!5m2!1sen!2sus" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade" padding-bottom = "10px"></iframe>
-  </div>
+      <div class="ingredient-container" id="ingredient-container">
+      </div>
+      <div id="log"></div>
+      <script>
+        function addIngredient(name, amount, id) {
+          const container = document.getElementById("ingredient-container");
+    
+          const label = document.createElement("label");
+    
+          const span = document.createElement("span");
+          span.textContent = name;
+    
+          const spanAmount = document.createElement("span");
+          spanAmount.textContent = amount;
+    
+          // Optional: store ingredient ID as a data attribute
+          label.setAttribute("data-id", id);
+    
+          const space = document.createTextNode(": ");
+          label.appendChild(span);
+          label.appendChild(space);
+          label.appendChild(spanAmount);
+    
+          container.appendChild(label);
+        }
+    
+        $.ajax({
+          method: "GET",
+          url: "grocerylist.php",
+          dataType: "json"
+        })
+        .done(function(data) {
+          data.forEach(function(ingredient) {
+            addIngredient(ingredient.name, ingredient.amount, ingredient.ID);
+          });
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+          $("#log").text("Error: " + textStatus + " - " + errorThrown);
+        });
+      </script>
+</section>
 
   <br>
   <br>
