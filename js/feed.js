@@ -38,34 +38,34 @@ document.addEventListener("DOMContentLoaded", () => {
               toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
             });
   
-                          //SAVE
-              const postBtn = card.querySelector(".saveBtn");
-              postBtn.addEventListener("click", () => {
-                fetch("save_to_feed.recipe", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ id: recipe.id })
-                })
-                .then(res => res.json())
-                .then(data => {
-                  if (data.success) {
-                    alert("Recipe Saved!");
-                    postBtn.disabled = true;
-                    postBtn.textContent = "Saved!";
-                  } else if (data.status === "duplicate") {
-                    alert("Error Saving");
-                  } else {
-                    alert("Failed to save recipe.");
-                  }
-                })
-                .catch(err => {
-                  console.error("Save error:", err);
-                  alert("DUPLICATE: This recipe has already been saved to your favorites..");
-                });
+            const saveBtn = card.querySelector(".saveBtn");
+            saveBtn.addEventListener("click", () => {
+              fetch("save_to_recipe.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id: recipe.id })
+              })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  alert("Recipe saved to your recipes!");
+                  saveBtn.disabled = true;
+                  saveBtn.textContent = "Saved!";
+                } else {
+                  alert("Failed to save to recipes.");
+                }
+              })
+              .catch(err => {
+                console.error("Save to recipes error:", err);
+                alert("Error saving to recipes.");
               });
-            cardsContainer.appendChild(card);
-          });
-        })
+            });
+            
+    
+              cardsContainer.appendChild(card);
+            });
+          })
+
         .catch(error => console.error("Error fetching recipes:", error));
     }
   

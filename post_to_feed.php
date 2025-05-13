@@ -24,7 +24,7 @@ if ($result && $row = $result->fetch_assoc()) {
     }
 }
 
-$updateSql = "UPDATE recipes SET posted_to_feed = 1 WHERE id = $id";
+$updateSql = "UPDATE recipes SET posted_to_feed = 3 WHERE id = $id";
 if ($conn->query($updateSql) === TRUE) {
     echo json_encode(["success" => true]);
 } else {

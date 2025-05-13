@@ -1,6 +1,4 @@
 
-
-
 <?php
 header("Content-Type: application/json");
 $input = json_decode(file_get_contents("php://input"), true);
@@ -15,9 +13,6 @@ include("database.php");
 
 $id = (int)$input['id'];
 
-$checkSql = "SELECT posted_to_feed FROM recipes WHERE id = $id";
-$result = $conn->query($checkSql);
-
 
 if ($result && $row = $result->fetch_assoc()) {
     if ($row['posted_to_feed'] == 3) {
@@ -27,7 +22,7 @@ if ($result && $row = $result->fetch_assoc()) {
     }
 }
 
-$updateSql = "UPDATE recipes SET posted_to_feed = 1 WHERE id = $id";
+$updateSql = "UPDATE recipes SET posted_to_feed = 0 WHERE id = $id";
 if ($conn->query($updateSql) === TRUE) {
     echo json_encode(["success" => true]);
 } else {
@@ -37,3 +32,5 @@ if ($conn->query($updateSql) === TRUE) {
 
 $conn->close();
 ?>
+
+
