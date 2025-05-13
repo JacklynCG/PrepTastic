@@ -23,7 +23,7 @@
   <div class = "navbar">
     <ul>
       <li><a href="./help.html">Help</a></li>
-      <li><a href="./ingredients.php">Ingredients</a></li>
+      <li><a href="./ingredients.html">Ingredients</a></li>
       <li><a href="./recipes.html">Recipes</a></li>
       <li><a href="./calendar.html">Calendar</a></li>
       <li><a href="./feed.html">Feed</a></li>
@@ -45,47 +45,54 @@
     <section id="createFormSection" class="hidden">
         <div class="template-container">
             <form id="recipeForm">
-            <h2>Create Recipe</h2>
+                <h2>Create a New Recipe</h2>
+                
+                <!-- Recipe Name -->
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" name="recipeName" required>
             
-            <label for="recipeName">Recipe Name: </label>
-            <input type="text" id="recipeName" name="recipeName" required />
+                <!-- Author -->
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
             
-            <label for="author">Author: </label>
-            <input type="text" id="author" name="author" required />
+                <!-- Servings -->
+                <label for="servings">Servings:</label>
+                <input type="number" id="servings" name="servings" required>
 
-            <label for="servings">Servings: </label>
-            <input type="number" id="servings" name="servings" min="1" required />
-
-            <label for="time">Time: </label>
-                <input type="number" id="cookTimeHours" placeholder="Hours" min="0" required>
-                <input type="number" id="cookTimeMinutes" placeholder="Minutes" min="0" max="59" required>
+                <!-- Description-->
+                <label for="description">Description</label>:</label>
+                <textarea id="description" name="description"></textarea>
             
-                <label for="description">Description:</label>
-                <textarea id="description" placeholder="Write a short description" rows="2" required></textarea>
-
-            <div class="section">
-                <label>Ingredients:</label>
-                <div class="input-group">
-                <input type="text" id="ingredientInput" placeholder="Add ingredient"/>
-                <button type="button" id="addIngredientBtn">+</button>
-                </div>
+                <!-- Cook Time -->
+                <label for="cookTimeHours">Cook Time (Hours):</label>
+                <input type="number" id="cookTimeHours" name="cookTimeHours" min="0">
+            
+                <label for="cookTimeMinutes">Cook Time (Minutes):</label>
+                <input type="number" id="cookTimeMinutes" name="cookTimeMinutes" min="0">
+            
+                <!-- Ingredients -->
+                <label for="ingredientInput">Ingredients:</label>
+                <input type="text" id="ingredientInput" name="ingredientInput">
+                <button type="button" id="addIngredientBtn">Add Ingredient</button>
+            
                 <ul id="ingredientList"></ul>
-            </div>
-
-            <div class="section">
-                <label>Steps:</label>
-                <div class="input-group">
-                <input type="text" id="stepInput" placeholder="Add step"/>
-                <button type="button" id="addStepBtn">+</button>
-                </div>
+            
+                <!-- Steps -->
+                <label for="stepInput">Steps:</label>
+                <input type="text" id="stepInput" name="stepInput">
+                <button type="button" id="addStepBtn">Add Step</button>
+            
                 <ol id="stepList"></ol>
-            </div>
-
-            <label for="notes">Notes:</label>
-            <textarea id="notes" placeholder="(optional) Add any additional notes..." rows="2"></textarea>
-
-            <button type="submit">Save Recipe</button>
+            
+                <!-- Notes -->
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+            
+                <!-- Post Button -->
+                <button type="submit" id="submitRecipeBtn">Submit Recipe</button>
             </form>
+            
+              
         </div>
     </section>
   </section>
@@ -120,7 +127,5 @@
   <!--Java Script-->
   <script src="js/recipe.js"></script>
 
-  <!--TODO-->
-  <!--Connect to databse-->
 </body>
 </html>
