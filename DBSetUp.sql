@@ -3,18 +3,21 @@
 -- I thought they were absolutely necessary or not
 
 -- main 3 tables that correspond to the main 3 features
-CREATE TABLE recipe (
-    ID INT AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    author VARCHAR(100),
-    servings INT NOT NULL,
-    time TIME NOT NULL,
-    ingredients VARCHAR(300) NOT NULL,
-    link VARCHAR(300) NOT NULL,
-    notes VARCHAR(300),
-    rating INT CHECK (rating >= 0 AND rating <= 5),
-    PRIMARY KEY (ID)
+-- I changed the recipe to recipes while working on it
+CREATE TABLE recipes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  author VARCHAR(255),
+  description TEXT,
+  servings INT,
+  time VARCHAR(50),
+  ingredients TEXT,
+  notes TEXT,
+  steps TEXT,
+  link VARCHAR(500)
 );
+
+ALTER TABLE recipes ADD posted_to_feed BOOLEAN DEFAULT 0;
 
 CREATE TABLE day (
     date DATE,
