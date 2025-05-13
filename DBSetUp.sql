@@ -35,7 +35,7 @@ CREATE TABLE ingredient (
     ID int AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     have_ingredient BOOLEAN,
-    amount INT,
+    amount VARCHAR(50),
     PRIMARY KEY (ID)
 );
 
