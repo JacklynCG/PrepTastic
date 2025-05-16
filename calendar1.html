@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meal Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+  <!-- Your Site Styles -->
+  <link rel="stylesheet" href="css/global.css">
+
+  <style>
+    #calendar {
+  width: 80%;  /* Make it full width of its parent */
+  height: 700px; /* Set a fixed height to make the calendar larger */
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+
+    .fc .fc-toolbar-title {
+      font-size: 2rem;
+      color: #54a496;
+    }
+
+    .fc-button {
+      background-color: #8FB0A9 !important;
+      border: none !important;
+      font-size: 1rem !important;
+      padding: 5px 10px !important;
+      border-radius: 6px !important;
+      color: white !important;
+    }
+
+    .fc-button:hover {
+      background-color: #F2D8B3 !important;
+      color: #D76735 !important;
+    }
+
+    .fc-event {
+      background-color: #D76735 !important;
+      border: none;
+      font-size: 1rem;
+      padding: 4px;
+      color: white;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <a href="./calendar.html">
+      <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
+    </a>
+  </header>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <ul>
+      <li><a href="./help.html">Help</a></li>
+      <li><a href="./ingredients.php">Ingredients</a></li>
+      <li><a href="./recipes.html">Recipes</a></li>
+      <li><a href="./calendar1.html">Calendar</a></li>
+      <li><a href="./feed.html">Feed</a></li>
+    </ul>
+  </div>
+
+  <!-- PAGE SECTION -->
+  <section id="page-section">
+    <h1 id="header-title">Your Meal Calendar</h1>
+    <h3 style="text-align: center; margin-bottom: 30px;">Click a date to assign a recipe to your calendar</h3>
+  </section>
+
+  <!-- CALENDAR -->
+  <div id="calendar"></div>
+
+  <!-- FOOTER -->
+  <br><br>
+  <footer class="footer">
+    <div class="footer-content">
+      <p><strong>Feel free to contact us with any questions!</strong></p>
+      <p>Phone number: 000-000-0000</p>
+      <p>Email: <a href="mailto:preptastic@fakeEmail.com">preptastic@fakeEmail.com</a></p>
+      <p>Instagram: <a href="fakelink.html">@preptasticmealprep</a></p>
+    </div>
+    <div class="footer-logo">
+      <img src="./images/logo/small-logo-transparent-png.png" alt="Small Preptastic Icon">
+    </div>
+  </footer>
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+  <!-- Your custom calendar script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: true,
+
+        dateClick: async function (info) {
+          // Fetch recipes from the server
+          const response = await fetch('show_recipes.php');
+          const recipes = await response.json();
+
+          if (!recipes.length) {
+            alert("No recipes available.");
+            return;
+          }
+
+          // Create a dropdown
+          const select = document.createElement('select');
+          select.innerHTML = recipes.map(r => `<option value="${r.id}">${r.name}</option>`).join('');
+
+          // Create additional inputs
+          const timeInput = document.createElement('input');
+          timeInput.placeholder = "Optional Time (HH:MM)";
+          timeInput.type = "time";
+
+          const noteInput = document.createElement('input');
+          noteInput.placeholder = "Optional Note";
+
+          const form = document.createElement('form');
+          form.appendChild(document.createTextNode("Select Recipe:"));
+          form.appendChild(document.createElement('br'));
+          form.appendChild(select);
+          form.appendChild(document.createElement('br'));
+
+          form.appendChild(document.createTextNode("Time (optional):"));
+          form.appendChild(document.createElement('br'));
+          form.appendChild(timeInput);
+          form.appendChild(document.createElement('br'));
+
+          form.appendChild(document.createTextNode("Note (optional):"));
+          form.appendChild(document.createElement('br'));
+          form.appendChild(noteInput);
+          form.appendChild(document.createElement('br'));
+
+          const submitBtn = document.createElement('button');
+          submitBtn.textContent = "Assign Recipe";
+          submitBtn.type = "submit";
+          form.appendChild(submitBtn);
+
+          const modal = document.createElement('div');
+          Object.assign(modal.style, {
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: '#fff',
+            padding: '20px',
+            boxShadow: '0 0 10px rgba(0,0,0,0.3)',
+            zIndex: 1000
+          });
+          modal.appendChild(form);
+
+          const backdrop = document.createElement('div');
+          Object.assign(backdrop.style, {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.5)',
+            zIndex: 999
+          });
+
+          document.body.appendChild(modal);
+          document.body.appendChild(backdrop);
+
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const recipeId = select.value;
+            const assignTime = timeInput.value;
+            const note = noteInput.value;
+
+            fetch("calendar_assign.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                recipe_id: recipeId,
+                assign_date: info.dateStr,
+                assign_time: assignTime,
+                note: note
+              }),
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  alert("Recipe assigned!");
+                  calendar.refetchEvents();
+                } else {
+                  alert("Failed to assign recipe.");
+                }
+                document.body.removeChild(modal);
+                document.body.removeChild(backdrop);
+              })
+              .catch(err => {
+                console.error("Assignment error:", err);
+                alert("Error assigning recipe.");
+                document.body.removeChild(modal);
+                document.body.removeChild(backdrop);
+              });
+          });
+
+          // Optional: Close modal on backdrop click
+          backdrop.addEventListener('click', () => {
+            document.body.removeChild(modal);
+            document.body.removeChild(backdrop);
+          });
+        },
+
+        events: {
+          url: 'calendar_get_assignments.php',
+          method: 'GET',
+          failure: function () {
+            alert('There was an error fetching calendar data.');
+          },
+        },
+
+        eventDidMount: function (info) {
+          const note = info.event.extendedProps.note;
+          if (note) {
+            info.el.title += `\nNote: ${note}`;
+          }
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+</body>
+</html>

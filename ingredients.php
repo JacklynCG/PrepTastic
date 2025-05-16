@@ -24,7 +24,7 @@
       <li><a href="./help.html">Help</a></li>
       <li><a href="./ingredients.php">Ingredients</a></li>
       <li><a href="./recipes.html">Recipes</a></li>
-      <li><a href="./calendar.html">Calendar</a></li>
+      <li><a href="./calendar1.html">Calendar</a></li>
       <li><a href="./feed.html">Feed</a></li>
     </ul>
   </div>

@@ -17,6 +17,7 @@ CREATE TABLE recipes (
   link VARCHAR(500)
 );
 
+
 ALTER TABLE recipes ADD COLUMN posted_to_feed INT DEFAULT 0;
 
 CREATE TABLE ingredient (
@@ -33,6 +34,7 @@ CREATE TABLE `calendar_event_master` (
   `event_name` varchar(255) DEFAULT NULL,
   `event_start_date` date DEFAULT NULL,
   `event_end_date` date DEFAULT NULL,
+   url VARCHAR(250),
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -121,3 +123,14 @@ INSERT INTO day (date, lunch, dinner, is_meal_prep)
 VALUES ("2025-03-31", 2, 1, TRUE);
 
 
+
+
+
+CREATE TABLE recipe_calendar (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT NOT NULL,
+    assign_date DATE NOT NULL,
+    assign_time TIME,
+    note TEXT,
+    FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
+);
