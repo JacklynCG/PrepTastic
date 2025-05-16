@@ -47,7 +47,7 @@ Color codes:
 }
 	
 .autocomplete-active {
-	background-color: DodgerBlue !important;
+	background-color: rgb(3, 135, 158) !important;
 	color: #ffffff;
 }
 
