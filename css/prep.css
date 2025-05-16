@@ -1,25 +1,5 @@
-/*
-Color codes:
-   background-color: #f5f5f5;
-   #F2D8B3 - Peachy Beige
-   #FBD266 - Yellow
-   #8FB0A9 - Main Page Teal
-  
 
-
-   #D76735 - Burnt Orange
-
-
-LOGO COLOR CODES:
-   #fec58e - light oarnge
-   #b9dea3 - light green
-   #6ab79e - Appple teal (lightest)
-   #54a496 - Preptastic teal (darker)
-*/
-
-
-
-
+/*Heads up this page is needed to override Bootsraps dang powerful css*/
 /*Main Body Structure*/
 
 
@@ -41,77 +21,52 @@ html, body {
 
 
 
-#prep-page-section
-{
-
-
-   width: 80%;
-   margin: auto;
-   padding: 10px 10px 10px 10px;
-}
-
-
-#prep-page-section h2 {
-   color: #D76735;
-   font-size: 35px;
-   padding: 0px;
-   margin: 0px;
-}
-
-
-#prep-page-section h3 {
-   color: #fec58e;
-   font-size: 25px;
-   padding: 0px;
-   margin: 0px;
-   margin-bottom: 50px;
-}
-
-
-
-
-
-
 /* Footer */
 .prep-footer {
-   background-color: #8FB0A9;
-   color: #f5f5f5;
-   text-align: center;
-   padding: 20px 10px 10px;
-   font-family: Arial, sans-serif;
- }
-  .prep-footer a {
-   color: #f5f5f5;
-   text-decoration: underline;
- }
-  .prep-footer a:hover {
-   text-decoration: none;
- }
-  .prep-footer-logo img {
-   display: block;
-   margin: 15px auto 0;
-   width: 40px; /* Adjust size as needed */
-   height: auto;
- }
+    background-color: #8FB0A9;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 20px 10px 10px;
 
+  }
+  
+  .prep-footer p{
+       font-family: Arial, sans-serif;
+    font-size: 1rem;
+  }
+
+  .prep-footer a {
+    color: #f5f5f5;
+    text-decoration: underline;
+  }
+  
+  .prep-footer a:hover {
+    text-decoration: none;
+  }
+  
+  .prep-footer-logo img {
+    display: block;
+    margin: 15px auto 0;
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+  }
+  
 
 /*navbar/Header*/
-
 
 .prep-navbar
 {
 background-color: #D76735;
 width: 100%;
-margin-bottom: 40px;
+margin-bottom: 57px;
 background-image: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
-z-index: 200000;
+z-index: 20000;
 }
 
-
-.prep-navbar ul
+.prep-navbar ul 
 {
 list-style-type: none;
 margin: 0;
@@ -119,88 +74,49 @@ padding: 0;
 overflow: hidden;
 }
 
-
 .prep-navbar li {
 float: right;
+font-size: 1.5rem;
 }
-
 
 .prep-navbar li a {
 color: #F2D8B3;
 display: block;
 text-align: center;
-padding: 20px;
+padding-left: 40px;
+padding-right: 40px;
+padding-top: 35.5px;
+padding-bottom: 35.5px;
 text-decoration: none;
- }
-
+font-size: 1.5rem;
+  }
 
 .prep-navbar li :hover {
-   background-color: #F2D8B3;
-   color: #D76735;
+    background-color: #F2D8B3;
+    color: #D76735;
 }
-
 
 header
 {
- background-color: white;
+  background-color: white;
 }
 
-
-.prep-header img
+.prep-header img 
 {
 display: block;
 margin: auto;
 margin-bottom: 10px;
 margin-top: 10px;
-width: 50%;
-height: 75px;
+height: 100px;
 width:auto;
 }
 
-
-#prep-header-title
+#prep-header-title 
 {
- text-align: center;
- color: #54a496;
- font-size: 40px;
- margin-top: 50px;
+  text-align: center;
+  color: #54a496; 
+  font-size: 5rem;
+  margin-top: 50px;
 }
 
 
-
-
-/*basic styleing*/
-
-
-
-
-hr {
-   border: 1px solid #8FB0A9;
-   width: 90%;
-   margin: auto;
-   margin-top: 50px;
-   margin-bottom: 50px;
-}
-
-
-
-
-
-
-button {
-   background: #8FB0A9;
-   color: #f5f5f5;
-   border: none;
-   border-radius: 10px;
-   cursor: pointer;
-
-
-   padding: 15px;
-   margin: 15px;
- }
-
-
-button:hover{
-   background: #F2D8B3;
-   color: #D76735;
-}

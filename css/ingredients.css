@@ -40,6 +40,7 @@ input[type="text"] {
 input[type="checkbox"]:checked + span {
   color: #8FB0A9;
   text-decoration: line-through;
+
 }
 
 label.checked {
@@ -48,13 +49,13 @@ label.checked {
 }
 
 .remove-btn {
+  font-size: 40px;
   margin-left: 3px;
-  padding: 1px 3px;
+  padding: 8px 15px;
   background-color: #D76735;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: xx-small;
 }
 
 .remove-btn:hover {

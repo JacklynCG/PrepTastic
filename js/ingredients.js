@@ -1,14 +1,3 @@
-/*When the "Add Ingredient" button is clicked:
-    - Get the value of the ingredient name from the input field.
-    - If the ingredient name is not empty:
-        - Create a new label.
-        - Create a new checkbox.
-        - Set the label’s text to the ingredient name.
-        - Add the checkbox and label to the container.
-    - If the ingredient name is empty:
-        - Show an alert message.
-    - Clear the input field after adding the ingredient.
- */
 
     document.getElementById("add-ingredient-btn").addEventListener("click", addIngredient);
     document.getElementById("ingredient-input").addEventListener("keypress", function(event) {
@@ -41,7 +30,7 @@
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox"; 
     
-        // Span to hold the ingredient name
+        //name
         const span = document.createElement("span");
         span.textContent = ingredientName;
 
@@ -55,10 +44,10 @@
         
         removeBtn.addEventListener("click", function() {
             container.removeChild(label);
-            // container.removeChild(br);
+
         });
 
-        // to get line through full label when checkbox checked
+        //checkbox
         checkbox.addEventListener("change", function () {
             if (checkbox.checked) {
                 label.classList.add("checked");
@@ -66,8 +55,7 @@
                 label.classList.remove("checked");
             }
         });        
-    
-        // Append the checkbox, span, and remove button to the label
+
         const space = document.createTextNode(": ");
         label.appendChild(checkbox);
         label.appendChild(span);
@@ -75,12 +63,9 @@
         label.appendChild(spanAmount);
         label.appendChild(removeBtn);
     
-        //Spacing
-        // const br = document.createElement("br");
-        container.appendChild(label);
-        // container.appendChild(br);
 
-        // Clear the input field after adding the ingredient
+        container.appendChild(label);
+
         input.value = "";
         inputAmount.value = "";
     }

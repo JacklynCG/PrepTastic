@@ -32,49 +32,79 @@
   </div>
 
   <section id="header-title">
-    <h1 style = "color: #54a496;">Help</h1>
+    <h1 style = "color: #54a496; font-size: 80px;">Help</h1>
     <hr>
   </section>
 
   <!--Instructions and Carousel Tutorial-->
-  <div class = "help_grid">
+  <section id="page-section">
     <div class = "instructions">
-      <h1>Instructions</h1>
+      <h2>Instructions</h2>
       <p>Welcome to Preptastic! Here are some instructions to get you started: </p>
       <p>First, you want to add some recipes to the recipes page. You can do so
-        by navigating to the Recipes page and then clicking the... 
+        by navigating to the Recipes page and then clicking the "Create Recipe" button.
       </p>
       <p>
         Second, you want to navigate back to the main page containing the calendar
-        and start planning when you want to make certain recipes! Simply select one of the three meal times
-        listed on each day to get started.
+        and start planning when you want to make certain recipes! Simply fill 
+        in the add meal form and then click the "Add Meal" button.
       </p>
       <p>
         Once you've got some recipes on the calendar, feel free to navigate to the Ingredients page
         to start planning what ingredients you have to get. Simply add each ingredient for the recipes you've planned
-        to the Ingredients page and then add to a specific grocery shopping list based on how you choose to organize them.
+        to the Ingredients page.
         If you already have a particlar ingredient in your pantry then feel free to check it off the list!
       </p>
-      <p>
-        More functionality coming soon!
-      </p>
-    </div>
+   </section>
+
+   <hr>
     
+   <section id="page-section">
+   <h2>Examples</h2>
+   <br>
+   <br>
     <div class = "carousel">
-      <h1>Tutorial</h1>
       <div class = "carousel-images">
-        <img src="./images/comingsoon.jpg" alt = "Coming soon!" class = "active">
-        <img src="./images/potato.jpg" alt = "A potato">
+        <!-- <img src="./images/comingsoon.jpg" alt = "Coming soon!" class = "active"> -->
+        <!-- <img src="./images/potato.jpg" alt = "A potato"> -->
+         <img src="./images/1.png" alt = "Step 1"  class = "active">
+         <img src="./images/second.png" alt = "Step 2">
+         <img src="./images/third.png" alt = "Step 3">
+         <img src="./images/fourth.png" alt = "Step 4">
+         <img src="./images/five.png" alt = "Step 5">
+         <img src="./images/six.png" alt = "Step 6">
+        
+         <img src="./images/cal1.png" alt = "Calendar">
+         <img src="./images/cal2.png" alt = "Calendar">
+         <img src="./images/cal3.png" alt = "Calendar">
+         <img src="./images/cal4.png" alt = "Calendar">
+         <img src="./images/cal5.png" alt = "Calendar">
+         <img src="./images/cal6.png" alt = "Calendar">
+         <img src="./images/cal7.png" alt = "Calendar">
+        
+        
+         <img src="./images/ing1.png" alt = "Ingredients">
+        <img src="./images/ing2.png" alt = "Ingredients added">
+        <img src="./images/ing3.png" alt = "Ingredients checked off">
       </div>
-      <button class = "prev" onclick = "changeSlide(-1)">&#10094;</button>
-      <button class = "next" onclick = "changeSlide(1)">&#10095;</button>
-    </div>
-    <script src = "./js/carousel.js"></script>
   </div>
 
+
+         
+
+  <div class="arrows">
+      <button class = "prev" onclick = "changeSlide(-1)">&#10094;</button>
+      <button class = "next" onclick = "changeSlide(1)">&#10095;</button>
+  </div>
+
+    <script src = "./js/carousel.js"></script>
+  </section>
+
+  <hr>
+
   <!--Frequently Asked Questions-->
+  <h2 style = "text-align: center; color: #D76735;">Frequently Asked Questions</h2>
   <div class = "questions">
-    <h1 style = "text-align: center;">Frequently Asked Questions</h1>
     <div class = "accordion">
       <!--Accordion Item 1-->
       <div class = "accordion-item">
@@ -103,20 +133,24 @@
     <script src="./js/accordion.js"></script>
   </div>
 
+  <hr>
+
   <!--Contact Infomation-->
-  <h1 style = "padding-left: 20px;">Contact Information</h1>
+  <section id="page-section">
+  <h2>Contact Information</h2>
   <div class = "contact">
     <p>
       Feel free to contact us with any questions!<br><br>
       Phone number: 000-000-0000<br><br>
-      Email: preptastic@gmail.com<br><br>
-      Instagram: @preptasticmealprep
+      Email: <a href="mailto:preptastic@fakeEmail.com">preptastic@fakeEmail.com</a><br><br>
+      Instagram: <a href="fakelink.html">@preptasticmealprep</a>
     </p>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.266172865597!2d-91.50619472376225!3d44.79576387107104!2m3!
     1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87f8bda1c1f99121%3A0x8e4f27fb702ea176!2sUniversity%20of%20Wisconsin-Eau%20Claire!
-    5e0!3m2!1sen!2sus!4v1745274455541!5m2!1sen!2sus" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+    5e0!3m2!1sen!2sus!4v1745274455541!5m2!1sen!2sus" width="75%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" 
     referrerpolicy="no-referrer-when-downgrade" padding-bottom = "10px"></iframe>
   </div>
+  </section>
 
   <br>
   <br>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Meal Calendar</title>
+  
 
 
   <!-- FullCalendar v6 -->
@@ -56,8 +57,11 @@
   </div>
 
 
-  <section id="header-title">
-    <h1 class="text-center mt-4"  style = "color: #54a496";>Meal Calendar</h1>
+  <section id="prep-header-title">
+  <h1 style = "  text-align: center;
+  color: #54a496; 
+  font-size: 5rem;
+  margin-top: 50px;"><strong>Meal Calendar</strong></h1>
   </section>
 
 <div></div><!--DELETE LATER - NEEDED TO PUSH-->
@@ -229,19 +233,7 @@ calendar.setOption('eventClick', function(info) {
       });
     });
   </script>
-
-
-<section id="page-section">
-			<h2>Groceries</h2>
-			<h3>Ingredients Still Needed</h3>
-
-			  <div class="ingredient-container" id="ingredient-container">
-			  </div>
-			  <input type="text" id="ingredient-input" placeholder="Enter ingredient name">
-			  <button id="add-ingredient-btn">Add Ingredient</button>
-
-		</section>
-		<hr>
+  
 
   <br>
   <br>
