@@ -1,12 +1,8 @@
-.help_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 10px;
-}
+ .arrows {
+    width: 13.9%;
+    margin: auto;
+ }
 
-.help_grid div {
-    padding: 20px;
-}
 
 .questions {
     margin-top: 1%;
@@ -84,8 +80,8 @@ p {
 }
 
 .carousel-images img {
-    width: 900px;
-    height: 800px;
+    height: 550px;
+     width: 650px;
     object-fit: contain;
     display: none;
     border: 5px solid black;
