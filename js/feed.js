@@ -16,16 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
               <p><strong>Servings:</strong> ${recipe.servings}</p>
               <p><strong>Description:</strong> ${recipe.description}</p>
               <p><strong>Time:</strong> ${recipe.time}</p>
-              <button class="toggleDetails">Show Recipe</button>
-              <button class="saveBtn">Save to Recipes</button>
+            
               <div class="recipeDetails" style="display: none;">
                 <h4>Ingredients:</h4>
                 <ul>${recipe.ingredients.split(", ").map(i => `<li>${i}</li>`).join("")}</ul>
                 <h4>Steps:</h4>
                 <ol>${recipe.steps.split(", ").map(s => `<li>${s}</li>`).join("")}</ol>
                 <p><strong>Notes:</strong> ${recipe.notes}</p>
-                
               </div>
+
+              <button class="toggleDetails">Show Recipe</button>
+              <button class="saveBtn">Save to Recipes</button>
             `;
   
 

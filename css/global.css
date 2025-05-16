@@ -43,25 +43,33 @@ body
 
 #page-section
 {
-    background-color: ;
+ 
     width: 80%;
     margin: auto;
     padding: 10px 10px 10px 10px;
 }
 
+#page-section h1{
+  font-size: 5rem;
+}
+
 #page-section h2 {
     color: #D76735;
-    font-size: 35px;
+    font-size: 3.5rem;
     padding: 0px;
     margin: 0px;
 }
 
 #page-section h3 {
     color: #fec58e;
-    font-size: 25px;
+    font-size: 3rem;
     padding: 0px;
     margin: 0px;
     margin-bottom: 50px;
+}
+
+p{
+  font-size: 1.5rem;
 }
 
 
@@ -73,6 +81,7 @@ body
     text-align: center;
     padding: 20px 10px 10px;
     font-family: Arial, sans-serif;
+    font-size: 1.5rem;
   }
   
   .footer a {
@@ -123,6 +132,7 @@ display: block;
 text-align: center;
 padding: 20px;
 text-decoration: none;
+font-size: 1.5rem;
   }
 
 .navbar li :hover {
@@ -141,8 +151,7 @@ display: block;
 margin: auto;
 margin-bottom: 10px;
 margin-top: 10px;
-width: 50%;
-height: 75px;
+height: 100px;
 width:auto;
 }
 
@@ -150,7 +159,7 @@ width:auto;
 {
   text-align: center;
   color: #54a496; 
-  font-size: 40px;
+  font-size: 5rem;
   margin-top: 50px;
 }
 
@@ -177,6 +186,7 @@ button {
 
     padding: 15px;
     margin: 15px;
+    font-size: 3rem;
   }
 
 button:hover{
