@@ -1,8 +1,18 @@
+/*
+Color codes: 
+    #F2D8B3 - Peachy Beige
+    #FBD266 - Yellow
+    #8FB0A9 - Light Teal
+    #D76735 - Burnt Orange
+*/
+
 /* Calendar container */
 .container-calendar
 {
 	background: #ffffff;
-	padding-inline: 15px;
+	padding-top: 25px;
+	padding-inline:15px;
+	padding-bottom: 25px;
 	max-width: 100%;
 	height: 700px;
 	padding-top: 25px;
@@ -46,3 +56,10 @@ label {
 	display: block;
 	margin-bottom: 10px;
   }
+
+
+#fc-button-group
+{
+	color:#8FB0A9;
+	
+}
