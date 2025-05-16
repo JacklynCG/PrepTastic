@@ -181,7 +181,7 @@ hr {
 }
 
 p {
-  font-size: 40px;
+  font-size: 1.5rem;
 }
 
 button {
@@ -193,7 +193,7 @@ button {
 
     padding: 15px;
     margin: 15px;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
 button:hover{
