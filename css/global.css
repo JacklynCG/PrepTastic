@@ -177,10 +177,10 @@ width:auto;
 
 
 hr {
-    border: 1px solid #8FB0A9;
-    width: 90%;
-    margin: auto;
-    margin-top: 50px;
+    border: 1px solid #8FB0A9 !important;
+    width: 90% !important;
+    margin: auto !important;
+    margin-top: 50px !important;
     margin-bottom: 50px;
 }
 

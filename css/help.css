@@ -31,6 +31,16 @@ p {
     font-size: 40px;
 }
 
+.contact a{
+    color: #333;;
+    text-decoration: underline;
+}
+
+.contact a:hover {
+    color:#54a496;
+    text-decoration: none;
+  }
+
 /* Accordion content */
 .accordion {
     margin: 0 auto;
