@@ -17,7 +17,9 @@ CREATE TABLE recipes (
   link VARCHAR(500)
 );
 
-ALTER TABLE recipes ADD posted_to_feed BOOLEAN DEFAULT 0;
+
+
+ALTER TABLE ingredient 
 
 CREATE TABLE day (
     date DATE,
@@ -34,13 +36,8 @@ CREATE TABLE day (
 CREATE TABLE ingredient (
     ID int AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-<<<<<<< Updated upstream
-    have_ingredient BOOLEAN,
-    amount VARCHAR(50),
-=======
     have_ingredient BOOLEAN DEFAULT 0,
     amount VARCHAR(50) NOT NULL,
->>>>>>> Stashed changes
     PRIMARY KEY (ID)
 );
 

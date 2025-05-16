@@ -84,8 +84,12 @@ p{
     color: #f5f5f5;
     text-align: center;
     padding: 20px 10px 10px;
+  
+  }
+
+  .footer p {
     font-family: Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   
   .footer a {
@@ -128,7 +132,7 @@ overflow: hidden;
 
 .navbar li {
 float: right;
-font-size: 40px;
+font-size: 1.5rem;
 }
 
 .navbar li a {
