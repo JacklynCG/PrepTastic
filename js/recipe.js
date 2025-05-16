@@ -103,16 +103,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-        <h3>${name}</h3>
+        <h3><strong>${name}</strong></h3>
         <p><strong>Author:</strong> ${author}</p>
         <p><strong>Servings:</strong> ${servings}</p>
         <p><strong>Description:</strong> ${description}</p>
         <p><strong>Time:</strong> ${time}</p>
         
         <div class="recipeDetails" style="display: none;">
-            <h4>Ingredients:</h4>
+            <p><strong>Ingredients:</strong></p>
             <ul>${ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-            <h4>Steps:</h4>
+            <p><strong>Steps:</strong></p>
             <ol>${steps.map(s => `<li>${s}</li>`).join("")}</ol>
             <p><strong>Notes:</strong> ${notes}</p>
 
@@ -204,16 +204,16 @@ document.addEventListener("DOMContentLoaded", () => {
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-            <h3>${recipe.name}</h3>
+            <h3><strong>${recipe.name}</strong></h3>
             <p><strong>Author:</strong> ${recipe.author}</p>
             <p><strong>Servings:</strong> ${recipe.servings}</p>
             <p><strong>Description:</strong> ${recipe.description}</p>
             <p><strong>Time:</strong> ${recipe.time}</p>
           
             <div class="recipeDetails" style="display: none;">
-                <h4>Ingredients:</h4>
+                <p><strong>Ingredients:</strong></p>
                 <ul>${recipe.ingredients.split(", ").map(i => `<li>${i}</li>`).join("")}</ul>
-                <h4>Steps:</h4>
+                <p><strong>Steps:</strong></p>
                 <ol>${recipe.steps.split(", ").map(s => `<li>${s}</li>`).join("")}</ol>
                 <p><strong>Notes:</strong> ${recipe.notes}</p>
 
@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="postBtn">Post to Feed</button>
                 <button class="deleteBtn">Remove Recipe</button> 
           `;
+          
 
           const toggleBtn = card.querySelector(".toggleDetails");
           const details = card.querySelector(".recipeDetails");

@@ -1,6 +1,7 @@
 label {
   display: block;
   margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 input[type="text"] {
@@ -10,12 +11,13 @@ input[type="text"] {
   background-color: #f5f5f5;
   color: #333;
 
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   border-radius: 6px;
   border: 1px solid #8FB0A9;
 
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
 }
 
 input[type="text"] {
@@ -26,12 +28,13 @@ input[type="text"] {
   background-color: #f5f5f5;
   color: #333;
 
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   border-radius: 6px;
   border: 1px solid #8FB0A9;
 
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
 }
 
 input[type="checkbox"]:checked + span {

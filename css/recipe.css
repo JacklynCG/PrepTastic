@@ -27,7 +27,7 @@ LOGO COLOR CODES:
     background-color: #d9e8e5;
     color:#5b716d;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    font-size: 1.5rem;
 }
   
 
@@ -47,6 +47,7 @@ LOGO COLOR CODES:
     border: 1px solid #8FB0A9;
 
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
   }
 
   input[type="number"] {
@@ -59,6 +60,8 @@ LOGO COLOR CODES:
     margin-top: 1rem;
     border-radius: 6px;
     border: 1px solid #8FB0A9;
+    font-size: 1.5rem;
+
   }
   
   .input-group {
@@ -78,6 +81,7 @@ LOGO COLOR CODES:
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.5rem;
   }
 
 
@@ -109,15 +113,23 @@ button:hover{
     background-color: #d9e8e5;
     color:#5b716d;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1rem;
   }
   
   .card h3 {
     margin: 0 0 0.5rem 0;
     color: #D76735;
+    font-size: 2.5rem;
+    padding: 0.5rem;
     
+  }
+
+  .card p{
+    font-size: 1.5rem;
   }
   
   .card ul, .card ol {
     
     margin: 0.5rem 0 0 1.25rem;
+    font-size: 1.5rem;
   }
