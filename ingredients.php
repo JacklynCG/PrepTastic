@@ -79,7 +79,7 @@
           label.classList.add("checked");
         }
     
-        // Span to hold the ingredient name
+  
         const span = document.createElement("span");
         span.textContent = ingredientName;
         span.style.fontSize = "35px";
@@ -88,7 +88,7 @@
         spanAmount.textContent = ingredientAmount;
         spanAmount.style.fontSize = "35px";
     
-        //Remove button
+
         const removeBtn = document.createElement("button");
         removeBtn.textContent = " X ";
         removeBtn.classList.add("remove-btn");
@@ -103,7 +103,7 @@
         // ingredient ID is saved as an attribute for the label it is stored as
         removeBtn.addEventListener("click", function() {
           const ingredientId = this.getAttribute("data-id");
-          // console.log("Ingredient ID being sent: ", ingredientId);  // Log the ID
+
 
           fetch('delete_ingredient.php', {
             method: 'POST',
@@ -112,10 +112,10 @@
             },
             body: 'id=' + encodeURIComponent(ingredientID)
           })
-          // .then(response => response.text()) {}
+        
           .then(response => {
             // console.log("Response Status: ", response.status); // Log the HTTP response status for debugging
-            return response.text();  // Get the response text
+            return response.text(); 
           })
           .then(data => {
             // console.log("Delete response from server:", data); // Log the raw response for debugging
@@ -128,7 +128,7 @@
           });
         });
 
-        // to get line through full label when checkbox checked
+        // checkbox checked
         checkbox.addEventListener("change", function () {
           const checkedVal = checkbox.checked ? 1 : 0;
 
@@ -157,7 +157,7 @@
 
         });      
     
-        // Append the checkbox, span, and remove button to the label
+     
         const space = document.createElement("span");
         space.textContent = ": ";
         space.style.fontSize = "35px";

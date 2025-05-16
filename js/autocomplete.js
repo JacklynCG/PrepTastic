@@ -12,7 +12,6 @@ function autocomplete(inp, arr)
 	
 	let currentFocus;
 
-	// When user types into the input field
 	inp.addEventListener("input", function () 
 	{
 		let a, b, i, val = this.value;
@@ -20,33 +19,28 @@ function autocomplete(inp, arr)
 		if (!val) return false;
 		currentFocus = -1;
 
-		// Create a container DIV (a) for suggestion items
 		a = document.createElement("DIV");
 		a.setAttribute("id", this.id + "autocomplete-list");
 		a.setAttribute("class", "autocomplete-items");
 
-		// Append it to the same parent as the input field
+		
 		this.parentNode.appendChild(a);
 
-		// Loop through recipe array (arr)
+
 		for (i = 0; i < arr.length; i++) 
 			{
 			if (arr[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) 
 				{
-
-				// Create each suggestion item (b)
 				b = document.createElement("DIV");
 				b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
 				b.innerHTML += arr[i].substr(val.length);
 				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 
-				// When user clicks a suggestion
 				b.addEventListener("click", function () 
 				{
 					const selectedName = this.getElementsByTagName("input")[0].value;
 					inp.value = selectedName;
 
-					// Auto-fill recipe title and link fields
 					document.getElementById("eventTitle").value = selectedName;
                     const recipe = recipeNames.find(r => r.name === selectedName);					if (recipe) {
 						document.getElementById("recipeLink").value = recipe.link;
@@ -55,13 +49,11 @@ function autocomplete(inp, arr)
 					closeAllLists();
 				});
 
-				// Add this item (b) to the container (a)
 				a.appendChild(b);
 			}
 		}
 	});
 
-	// Handle keyboard navigation (up/down arrows + enter)
 	inp.addEventListener("keydown", function (e) {
 		let x = document.getElementById(this.id + "autocomplete-list");
 		if (x) x = x.getElementsByTagName("div");

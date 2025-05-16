@@ -177,59 +177,6 @@
   </script>
   
 
-  <!--
-  <section id="page-section">
-    <h2>Groceries</h2>
-    <h3>Ingredients Still Needed</h3>
-
-      <div class="ingredient-container" id="ingredient-container">
-      </div>
-      <div id="log"></div>
-      <script>
-        function addIngredient(name, amount, id) {
-          const container = document.getElementById("ingredient-container");
-    
-          const label = document.createElement("label");
-    
-          const span = document.createElement("span");
-          span.textContent = name;
-          span.style.fontSize = "40px";
-    
-          const spanAmount = document.createElement("span");
-          spanAmount.textContent = amount;
-          span.style.fontSize = "40px";
-    
-          // Optional: store ingredient ID as a data attribute
-          label.setAttribute("data-id", id);
-    
-          const space = document.createElement("span");
-          space.textContent = ": ";
-          space.style.fontSize = "40px";
-
-          label.appendChild(span);
-          label.appendChild(space);
-          label.appendChild(spanAmount);
-    
-          container.appendChild(label);
-        }
-    
-        $.ajax({
-          method: "GET",
-          url: "grocerylist.php",
-          dataType: "json"
-        })
-        .done(function(data) {
-          data.forEach(function(ingredient) {
-            addIngredient(ingredient.name, ingredient.amount, ingredient.ID);
-          });
-        })
-        .fail(function(jqXHR, textStatus, errorThrown) {
-          $("#log").text("Error: " + textStatus + " - " + errorThrown);
-        });
-      </script>
-</section>
--->
-
   <br>
   <br>
   <footer class="prep-footer">

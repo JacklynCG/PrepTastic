@@ -1,13 +1,11 @@
-// calendar.js
+//views
+let viewType = "weekly";  
+let currentDate = new Date();  
+let calendarView = document.getElementById("calendar-body");
 
-let viewType = "weekly";  // default view
-let currentDate = new Date();  // needed for day/week view
-let calendarView = document.getElementById("calendar-body"); // make sure this exists in your HTML
 
-// Define an array to store events
 let events = [];
 
-// letiables to store event input fields and reminder list
 let eventDateInput =
 	document.getElementById("eventDate");
 let eventTitleInput =
@@ -17,10 +15,9 @@ let eventDescriptionInput =
 let reminderList =
 	document.getElementById("reminderList");
 
-// Counter to generate unique event IDs
 let eventIdCounter = 1;
 
-// Function to add events
+//Adding events
 function addEvent() {
     const date = document.getElementById("eventDate").value;
     const mealType = document.querySelector('input[name="mealType"]:checked').value;
@@ -31,7 +28,6 @@ function addEvent() {
         return;
     }
 
-    // Send data to the PHP file
     fetch("plannedMeals.php", {
         method: "POST",
         headers: {
@@ -49,16 +45,14 @@ function addEvent() {
             alert("Failed to add meal.");
         });
 }
-// Function to delete an event by ID
+
 function deleteEvent(eventId) 
 {
-	// Find the index of the event with the given ID
 	let eventIndex =
 		events.findIndex((event) =>
 			event.id === eventId);
 
 	if (eventIndex !== -1) {
-		// Remove the event from the events array
 		events.splice(eventIndex, 1);
 		showCalendar(currentMonth, currentYear);
 		displayReminders();
@@ -66,8 +60,6 @@ function deleteEvent(eventId)
 }
 
 
-
-// Function to display reminders
 function displayReminders() 
 {
 	reminderList.innerHTML = "";
@@ -86,7 +78,6 @@ function displayReminders()
 			${event.description} on 
 			${eventDate.toLocaleDateString()}`;
 
-			// Add a delete button for each reminder item
 			let deleteButton =
 				document.createElement("button");
 			deleteButton.className = "delete-event";
@@ -101,7 +92,7 @@ function displayReminders()
 	}
 }
 
-// Function to generate a range of years for the year select input
+//the calander's rangfe 
 function generate_year_range(start, end) 
 {
 	let years = "";
@@ -112,7 +103,6 @@ function generate_year_range(start, end)
 	return years;
 }
 
-// Initialize date-related letiables
 today = new Date();
 currentMonth = today.getMonth();
 currentYear = today.getFullYear();
@@ -160,7 +150,7 @@ document.getElementById("thead-month").innerHTML = $dataHead;
 monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
-// Function to navigate to the  month
+//navigation (month)
 function next() {
 	currentYear = currentMonth === 11 ?
 		currentYear + 1 : currentYear;
@@ -168,7 +158,6 @@ function next() {
 	showCalendar(currentMonth, currentYear);
 }
 
-// Function to navigate to the previous month
 function previous() {
 	currentYear = currentMonth === 0 ?
 		currentYear - 1 : currentYear;
@@ -177,14 +166,15 @@ function previous() {
 	showCalendar(currentMonth, currentYear);
 }
 
-// Function to jump to a specific month and year
+//Jumping by year/motnh
 function jump() {
 	currentYear = parseInt(selectYear.value);
 	currentMonth = parseInt(selectMonth.value);
 	showCalendar(currentMonth, currentYear);
 }
 
-// Function to display the calendar
+//Displays/views:
+
 function showCalendar(month, year)
  {
 	calendarView.innerHTML = ""; // clear view
@@ -204,7 +194,7 @@ function showCalendar(month, year)
 	displayReminders();	
 }
 
-// Function to handle view changes
+
 function changeView() {
     const viewType = document.getElementById("viewType").value;
     
@@ -217,7 +207,7 @@ function changeView() {
     }
 }
 
-// Render daily view
+
 function renderDailyView() {
     const tbl = document.getElementById("calendar-body");
     tbl.innerHTML = "";
@@ -229,11 +219,10 @@ function renderDailyView() {
     cell.className = "date-picker selected";
     cell.innerHTML = `<span>${todayDate.getDate()}</span>`;
 
-    // Check which radio button is selected
+
     const selectedMeal = document.querySelector('input[name="mealOpt"]:checked');
 
     if (hasEventOnDate(todayDate.getDate(), todayDate.getMonth(), todayDate.getFullYear()) && selectedMeal) {
-        // Apply the appropriate event marker class based on the selected meal
         if (selectedMeal.id === "breakfast") {
             cell.classList.add("event-marker-breakfast");
         } else if (selectedMeal.id === "lunch") {
@@ -241,8 +230,6 @@ function renderDailyView() {
         } else if (selectedMeal.id === "dinner") {
             cell.classList.add("event-marker-dinner");
         }
-
-        // Add the event tooltip
         cell.appendChild(createEventTooltip(todayDate.getDate(), todayDate.getMonth(), todayDate.getFullYear()));
     }
 
@@ -252,7 +239,6 @@ function renderDailyView() {
     monthAndYear.innerHTML = months[todayDate.getMonth()] + " " + todayDate.getFullYear();
 }
 
-// Render weekly view
 function renderWeeklyView() {
 	const tbl = document.getElementById("calendar-body");
 	tbl.innerHTML = "";
@@ -284,7 +270,7 @@ function renderWeeklyView() {
 	monthAndYear.innerHTML = "Week of " + startOfWeek.toLocaleDateString();
 }
 
-// Render monthly view
+
 function renderMonthlyView(month, year) {
 	let firstDay = new Date(year, month, 1).getDay();
 	let date = 1;
@@ -326,7 +312,7 @@ function renderMonthlyView(month, year) {
 	}
 }
 
-// Function to create an event tooltip
+
 function createEventTooltip(date, month, year) 
 {
 	let tooltip = document.createElement("div");
@@ -347,7 +333,7 @@ function createEventTooltip(date, month, year)
 	return tooltip;
 }
 
-// Function to get events on a specific date
+
 function getEventsOnDate(date, month, year) 
 {
 	return events.filter(function (event) 
@@ -372,31 +358,31 @@ function mealType() {
     const selectedMeal = document.querySelector('input[name="mealOpt"]:checked');
     if (selectedMeal) {
         console.log(`Selected meal type: ${selectedMeal.value}`);
-        // Add your logic here for handling the selected meal type
+        
     }
 }
 
 
 
-// Function to check if there are events on a specific date
+
 function hasEventOnDate(date, month, year) 
 {
 	return getEventsOnDate(date, month, year).length > 0;
 }
 
-// Function to get the number of days in a month
+
 function daysInMonth(iMonth, iYear) {
 	return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 
-// Call the showCalendar function initially to display the calendar
+
 showCalendar(currentMonth, currentYear);
 
 document.getElementById("addMeal").addEventListener("click", function () 
 {
 	let date = eventDateInput.value;
 	let title = eventTitleInput.value;
-	let description = document.getElementById("recipeLink" || recipeID).value; // Use recipe link as description
+	let description = document.getElementById("recipeLink" || recipeID).value; 
 
 	if (date && title)
 		 {

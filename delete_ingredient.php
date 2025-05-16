@@ -2,28 +2,26 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
     include 'database.php';
 
-    // Get the ingredient ID from the POST request
-    $id = intval($_POST['id']);  // Ensure we get a clean integer
-    // echo "ID received: $id";  // Log the ID to confirm it's being passed correctly
+    $id = intval($_POST['id']); 
 
-    // Check if ID is valid
+
+
     if ($id <= 0) {
         echo "Error: Invalid ID.";
-        exit;  // Exit if ID is not valid
+        exit; 
     }
 
-    // SQL query to delete the ingredient by id
     $sql = "DELETE FROM ingredient WHERE id = ?";
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("i", $id);  // Bind the ID as an integer
-        $success = $stmt->execute();  // Execute the query
+        $stmt->bind_param("i", $id);  
+        $success = $stmt->execute(); 
         
         if ($success) {
-            echo "success";  // Success response
+            echo "success"; 
         } else {
-            // Log the error and provide feedback
+           
             echo "Error executing delete query: " . $stmt->error;
         }
 
@@ -34,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['id'])) {
 
     $conn->close();
 } else {
-    echo "No ID received";  // This will show if no ID is passed from JavaScript
+    echo "No ID received";
 }
 ?>
 

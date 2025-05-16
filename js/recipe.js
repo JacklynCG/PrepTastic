@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
     });
 
-    // POST handler with newId
+    // POST
     const postBtn = card.querySelector(".postBtn");
     postBtn.addEventListener("click", () => {
       fetch("post_to_feed.php", {
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // DELETE handler with newId
+    // DELETE
     const deleteBtn = card.querySelector(".deleteBtn");
     deleteBtn.addEventListener("click", () => {
       if (confirm("Are you sure you want to delete this recipe?")) {
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(res => res.text())
         .then(msg => {
           alert(msg);
-          card.remove(); // Remove from DOM without reload
+          card.remove();
         });
       }
     });
@@ -234,7 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
           });
 
-          //delete
             const deleteBtn = card.querySelector(".deleteBtn");
             deleteBtn.addEventListener("click", () => {
               if (confirm("Are you sure you want to delete this recipe?")) {
@@ -248,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.text())
                 .then(result => {
                   alert(result);
-                  fetchRecipes(); // Refresh the list
+                  fetchRecipes();
                 })
                 .catch(error => {
                   console.error("Delete error:", error);
@@ -257,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             });
 
-              //POST
+   
               const postBtn = card.querySelector(".postBtn");
               postBtn.addEventListener("click", () => {
                 fetch("post_to_feed.php", {
