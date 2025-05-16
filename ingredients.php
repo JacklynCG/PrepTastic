@@ -35,7 +35,7 @@
   </section>
 
   <section id="page-section">
-    <h2 style = "font-size: 50px;">Your Ingredients</h2>
+    <h2>Your Grocery List</h2>
 
     <!--Right now I am just trying to get the "checkmark" feature to work, where when ingredients are clicked on
     it will make the words a light grey to signify that the user owns that ingredient.-->

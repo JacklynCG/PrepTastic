@@ -27,10 +27,14 @@ html, body {
     color: #f5f5f5;
     text-align: center;
     padding: 20px 10px 10px;
-    font-family: Arial, sans-serif;
-    font-size: 1.5rem;
+
   }
   
+  .prep-footer p{
+       font-family: Arial, sans-serif;
+    font-size: 1rem;
+  }
+
   .prep-footer a {
     color: #f5f5f5;
     text-decoration: underline;
@@ -54,11 +58,12 @@ html, body {
 {
 background-color: #D76735;
 width: 100%;
-margin-bottom: 40px;
+margin-bottom: 57px;
 background-image: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
+z-index: 20000;
 }
 
 .prep-navbar ul 
@@ -78,7 +83,10 @@ font-size: 1.5rem;
 color: #F2D8B3;
 display: block;
 text-align: center;
-padding: 40px;
+padding-left: 40px;
+padding-right: 40px;
+padding-top: 35.5px;
+padding-bottom: 35.5px;
 text-decoration: none;
 font-size: 1.5rem;
   }
