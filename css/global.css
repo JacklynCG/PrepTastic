@@ -60,6 +60,10 @@ body
     margin: 0px;
 }
 
+h2 {
+  font-size: 50px;
+}
+
 #page-section h3 {
     color: #fec58e;
     font-size: 3rem;
@@ -124,13 +128,14 @@ overflow: hidden;
 
 .navbar li {
 float: right;
+font-size: 40px;
 }
 
 .navbar li a {
 color: #F2D8B3;
 display: block;
 text-align: center;
-padding: 20px;
+padding: 40px;
 text-decoration: none;
 font-size: 1.5rem;
   }
@@ -175,7 +180,9 @@ hr {
     margin-bottom: 50px;
 }
 
-
+p {
+  font-size: 40px;
+}
 
 button {
     background: #8FB0A9;

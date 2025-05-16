@@ -26,16 +26,21 @@ CREATE TABLE day (
     dinner INT,
     is_meal_prep BOOLEAN,
     PRIMARY KEY (date),
-    FOREIGN KEY (breakfast) REFERENCES recipe(ID),
-    FOREIGN KEY (lunch) REFERENCES recipe(ID),
-    FOREIGN KEY (dinner) REFERENCES recipe(ID)
+    FOREIGN KEY (breakfast) REFERENCES recipes(ID),
+    FOREIGN KEY (lunch) REFERENCES recipes(ID),
+    FOREIGN KEY (dinner) REFERENCES recipes(ID)
 );
 
 CREATE TABLE ingredient (
     ID int AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
+<<<<<<< Updated upstream
     have_ingredient BOOLEAN,
     amount VARCHAR(50),
+=======
+    have_ingredient BOOLEAN DEFAULT 0,
+    amount VARCHAR(50) NOT NULL,
+>>>>>>> Stashed changes
     PRIMARY KEY (ID)
 );
 

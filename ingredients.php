@@ -30,20 +30,20 @@
   </div>
 
   <section id="header-title">
-    <h1>Ingredients</h1>
+    <h1 style = "font-size: 80px;">Ingredients</h1>
     <hr>
   </section>
 
   <section id="page-section">
-    <h2>Your Ingredients</h2>
+    <h2 style = "font-size: 50px;">Your Ingredients</h2>
 
     <!--Right now I am just trying to get the "checkmark" feature to work, where when ingredients are clicked on
     it will make the words a light grey to signify that the user owns that ingredient.-->
 
     <!--Basic Ingredient Feature that allows user to continously add ingredients to the list-->
     <form action="./ingredients.php" method="post">
-      <input type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name" maxlength = 50 required>
-      <input type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed" maxlength = 50 required>
+      <input style = "font-size: 35px;" type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name" maxlength = 50 required>
+      <input style = "font-size: 35px;" type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed" maxlength = 50 required>
       <button type="submit" id="add-ingredient-btn">Add Ingredient</button>
     </form>
 
@@ -73,6 +73,8 @@
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = isChecked;
+        checkbox.style.transform = "scale(2.0)";
+        checkbox.style.marginRight = "20px";
         if (isChecked) {
           label.classList.add("checked");
         }
@@ -80,15 +82,21 @@
         // Span to hold the ingredient name
         const span = document.createElement("span");
         span.textContent = ingredientName;
+        span.style.fontSize = "35px";
 
         const spanAmount = document.createElement("span");
         spanAmount.textContent = ingredientAmount;
+        spanAmount.style.fontSize = "35px";
     
         //Remove button
         const removeBtn = document.createElement("button");
         removeBtn.textContent = " X ";
         removeBtn.classList.add("remove-btn");
         removeBtn.setAttribute("data-id", ingredientID);
+        removeBtn.style.fontSize = "20px";
+        removeBtn.style.marginLeft = "10px";
+        removeBtn.style.padding = "5px 10px";
+
         
         // remove button functionality with removing label from container
         // and removing the selected ingredient from the database by getting that ingredient's ID
@@ -150,7 +158,10 @@
         });      
     
         // Append the checkbox, span, and remove button to the label
-        const space = document.createTextNode(": ");
+        const space = document.createElement("span");
+        space.textContent = ": ";
+        space.style.fontSize = "35px";
+
         label.appendChild(checkbox);
         label.appendChild(span);
         label.appendChild(space);

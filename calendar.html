@@ -187,14 +187,19 @@
     
           const span = document.createElement("span");
           span.textContent = name;
+          span.style.fontSize = "40px";
     
           const spanAmount = document.createElement("span");
           spanAmount.textContent = amount;
+          span.style.fontSize = "40px";
     
           // Optional: store ingredient ID as a data attribute
           label.setAttribute("data-id", id);
     
-          const space = document.createTextNode(": ");
+          const space = document.createElement("span");
+          space.textContent = ": ";
+          space.style.fontSize = "40px";
+
           label.appendChild(span);
           label.appendChild(space);
           label.appendChild(spanAmount);
