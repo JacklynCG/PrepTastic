@@ -92,14 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify(data),
     })
       .then(response => response.text())
+      
       .then(result => {
-        console.log("Server response:", result);
-        alert("Recipe submitted successfully!");
-      })
-      .catch(error => {
-        console.error("Fetch error:", error);
-        alert("Error submitting the recipe.");
-      });
+  const response = JSON.parse(result);
+  if (response.success) {
+    const newId = response.id;
+
+
 
     const card = document.createElement("div");
     card.className = "card";
@@ -133,6 +132,59 @@ document.addEventListener("DOMContentLoaded", () => {
       details.style.display = isVisible ? "none" : "block";
       toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
     });
+
+    // POST handler with newId
+    const postBtn = card.querySelector(".postBtn");
+    postBtn.addEventListener("click", () => {
+      fetch("post_to_feed.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: newId })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("Posted to feed!");
+          postBtn.disabled = true;
+          postBtn.textContent = "Posted!";
+        } else if (data.status === "duplicate") {
+          alert("Already posted.");
+        } else {
+          alert("Error posting recipe.");
+        }
+      });
+    });
+
+    // DELETE handler with newId
+    const deleteBtn = card.querySelector(".deleteBtn");
+    deleteBtn.addEventListener("click", () => {
+      if (confirm("Are you sure you want to delete this recipe?")) {
+        fetch("delete_recipe.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: newId })
+        })
+        .then(res => res.text())
+        .then(msg => {
+          alert(msg);
+          card.remove(); // Remove from DOM without reload
+        });
+      }
+    });
+
+    cardsContainer.appendChild(card);
+    form.reset();
+    ingredientList.innerHTML = "";
+    stepList.innerHTML = "";
+
+    
+  } else {
+    alert("Failed to submit recipe.");
+  }
+});
+
+
+
     cardsContainer.appendChild(card);
     form.reset();
     ingredientList.innerHTML = "";

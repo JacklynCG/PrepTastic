@@ -12,6 +12,7 @@ if (!$input) {
 
 $conn = new mysqli("localhost", "root", "", "preptastic");
 
+
 if ($conn->connect_error) {
     http_response_code(500);
     echo json_encode(["error" => "Connection failed"]);
@@ -29,11 +30,15 @@ $notes = $conn->real_escape_string($input['notes']);
 $link = $conn->real_escape_string($input['link']);
 
 
+
 $sql = "INSERT INTO recipes (name, author, description, servings, time, ingredients, notes, steps, link, posted_to_feed)
         VALUES ('$name', '$author', '$description', $servings, '$time', '$ingredients', '$notes', '$steps', '$link', 0)";
 
+
+
 if ($conn->query($sql) === TRUE) {
     echo json_encode(["success" => true, "id" => $conn->insert_id]);
+    
 } else {
     http_response_code(500);
     echo json_encode(["error" => $conn->error]);
