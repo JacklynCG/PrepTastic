@@ -13,7 +13,7 @@
   <!--HEADER-->
   <header class = "header">
     <div class="header">
-      <a href="./calendar.html">
+      <a href="./calendar1.html">
       <img src="./images/logo/logo-transparent-png.png" alt="Preptastic Logo Header">
       </a>
     </div>
