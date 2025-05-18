@@ -1,5 +1,4 @@
 <?php
-// calendar_get_assignments.php
 header('Content-Type: application/json');
 
 try {

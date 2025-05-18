@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //Stopping the enter issue lol
+
   form.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const target = e.target;
@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         addStepBtn.click();
       } else {
-        e.preventDefault();
+        e.preventDefault(); 
       }
     }
   });
 
-  //Creating the recipe card
+ 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const time = `${hours}h ${minutes}m`;
     const notes = document.getElementById("notes").value.trim();
 
-
+    
     const ingredients = Array.from(ingredientList.children).map(li => li.textContent);
     const steps = Array.from(stepList.children).map(li => li.textContent);
 
@@ -80,10 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
       time: time,
       ingredients: ingredients.join(", "),
       steps: steps.join(", "),
-      link: "http://localhost/preptastic/COPY.html", // Adjust the link as needed
+      link: "http://localhost/preptastic/recipes.html",
       notes: notes
     };
 
+    
     fetch("submit_recipe.php", {
       method: "POST",
       headers: {
@@ -91,28 +92,33 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify(data),
     })
-      .then(response => response.text())
-      
+      .then(response => response.text()) 
       .then(result => {
-  const response = JSON.parse(result);
-  if (response.success) {
-    const newId = response.id;
+        console.log("Server response:", result);
+        alert("Recipe submitted successfully!");
+      })
+      .catch(error => {
+        console.error("Fetch error:", error);
+        alert("Error submitting the recipe.");
+      });
+
+    
 
 
-
+    
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-        <h3><strong>${name}</strong></h3>
+        <h3>${name}</h3>
         <p><strong>Author:</strong> ${author}</p>
         <p><strong>Servings:</strong> ${servings}</p>
         <p><strong>Description:</strong> ${description}</p>
         <p><strong>Time:</strong> ${time}</p>
         
         <div class="recipeDetails" style="display: none;">
-            <p><strong>Ingredients:</strong></p>
+            <h4>Ingredients:</h4>
             <ul>${ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-            <p><strong>Steps:</strong></p>
+            <h4>Steps:</h4>
             <ol>${steps.map(s => `<li>${s}</li>`).join("")}</ol>
             <p><strong>Notes:</strong> ${notes}</p>
 
@@ -124,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="deleteBtn">Remove Recipe</button> 
     `;
 
+
     const toggleBtn = card.querySelector(".toggleDetails");
     const details = card.querySelector(".recipeDetails");
 
@@ -133,59 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
     });
 
-    // POST
-    const postBtn = card.querySelector(".postBtn");
-    postBtn.addEventListener("click", () => {
-      fetch("post_to_feed.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: newId })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          alert("Posted to feed!");
-          postBtn.disabled = true;
-          postBtn.textContent = "Posted!";
-        } else if (data.status === "duplicate") {
-          alert("Already posted.");
-        } else {
-          alert("Error posting recipe.");
-        }
-      });
-    });
-
-    // DELETE
-    const deleteBtn = card.querySelector(".deleteBtn");
-    deleteBtn.addEventListener("click", () => {
-      if (confirm("Are you sure you want to delete this recipe?")) {
-        fetch("delete_recipe.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: newId })
-        })
-        .then(res => res.text())
-        .then(msg => {
-          alert(msg);
-          card.remove();
-        });
-      }
-    });
-
+  
     cardsContainer.appendChild(card);
-    form.reset();
-    ingredientList.innerHTML = "";
-    stepList.innerHTML = "";
 
-    
-  } else {
-    alert("Failed to submit recipe.");
-  }
-});
-
-
-
-    cardsContainer.appendChild(card);
+  
     form.reset();
     ingredientList.innerHTML = "";
     stepList.innerHTML = "";
@@ -193,27 +151,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   
+ 
+
 
   function fetchRecipes() {
     fetch("get_recipes.php")
       .then(response => response.json())
       .then(recipes => {
-        cardsContainer.innerHTML = "";
+        cardsContainer.innerHTML = "";  
 
         recipes.forEach(recipe => {
           const card = document.createElement("div");
           card.className = "card";
           card.innerHTML = `
-            <h3><strong>${recipe.name}</strong></h3>
+            <h3>${recipe.name}</h3>
             <p><strong>Author:</strong> ${recipe.author}</p>
             <p><strong>Servings:</strong> ${recipe.servings}</p>
             <p><strong>Description:</strong> ${recipe.description}</p>
             <p><strong>Time:</strong> ${recipe.time}</p>
           
             <div class="recipeDetails" style="display: none;">
-                <p><strong>Ingredients:</strong></p>
+                <h4>Ingredients:</h4>
                 <ul>${recipe.ingredients.split(", ").map(i => `<li>${i}</li>`).join("")}</ul>
-                <p><strong>Steps:</strong></p>
+                <h4>Steps:</h4>
                 <ol>${recipe.steps.split(", ").map(s => `<li>${s}</li>`).join("")}</ol>
                 <p><strong>Notes:</strong> ${recipe.notes}</p>
 
@@ -223,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="postBtn">Post to Feed</button>
                 <button class="deleteBtn">Remove Recipe</button> 
           `;
-          
+
 
           const toggleBtn = card.querySelector(".toggleDetails");
           const details = card.querySelector(".recipeDetails");
@@ -234,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
           });
 
+        
             const deleteBtn = card.querySelector(".deleteBtn");
             deleteBtn.addEventListener("click", () => {
               if (confirm("Are you sure you want to delete this recipe?")) {
@@ -247,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.text())
                 .then(result => {
                   alert(result);
-                  fetchRecipes();
+                  fetchRecipes(); 
                 })
                 .catch(error => {
                   console.error("Delete error:", error);
@@ -256,7 +217,8 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             });
 
-   
+              //POST
+              
               const postBtn = card.querySelector(".postBtn");
               postBtn.addEventListener("click", () => {
                 fetch("post_to_feed.php", {
@@ -292,6 +254,15 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error fetching recipes:", error));
 
+
+
+
   }
+
+
+ 
   fetchRecipes();
+
 });
+
+  

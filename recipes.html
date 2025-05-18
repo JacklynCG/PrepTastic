@@ -31,7 +31,7 @@
   </div>
   
   <section id="header-title">
-    <h1 style = "font-size: 80px;">Your Recipes</h1>
+    <h1>Your Recipes</h1>
     <div class="button-group">
       <button id="createRecipeBtn"><h2>Create Recipe</h2></button>
       <a href="./feed.html"><button id="recipeBtn"><h2>Find Recipes</h2></button></a>
@@ -45,75 +45,47 @@
     <section id="createFormSection" class="hidden">
         <div class="template-container">
             <form id="recipeForm">
-                <h2>Create a New Recipe</h2>
-                <br>
-                <br>
-                <br>
-                <br>
-
-                <label for="recipeName">Recipe Name:</label>
-                <input type="text" id="recipeName" name="recipeName" required>
-                <br>
-                <br>
+            <h2>Create Recipe</h2>
             
-
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
-                <br>
-                <br>
+            <label for="recipeName">Recipe Name: </label>
+            <input type="text" id="recipeName" name="recipeName" required />
             
+            <label for="author">Author: </label>
+            <input type="text" id="author" name="author" required />
 
-                <label for="servings">Servings:</label>
-                <input type="number" id="servings" name="servings" required>
-                <br>
-                <br>
+            <label for="servings">Servings: </label>
+            <input type="number" id="servings" name="servings" min="1" required />
 
-
-                <label for="description">Description</label>:</label>
-                <textarea id="description" name="description"></textarea>
-                <br>
-                <br>
+            <label for="time">Time: </label>
+                <input type="number" id="cookTimeHours" placeholder="Hours" min="0" required>
+                <input type="number" id="cookTimeMinutes" placeholder="Minutes" min="0" max="59" required>
             
+                <label for="description">Description:</label>
+                <textarea id="description" placeholder="Write a short description" rows="2" required></textarea>
 
-                <label for="cookTimeHours">Cook Time (Hours):</label>
-                <input type="number" id="cookTimeHours" name="cookTimeHours" min="0">
-            
-            <br>
-                <br>
-                <label for="cookTimeMinutes">Cook Time (Minutes):</label>
-                <input type="number" id="cookTimeMinutes" name="cookTimeMinutes" min="0">
-                <br>
-                <br>
-            
-
-                <label for="ingredientInput">Ingredients:</label>
-                <input type="text" id="ingredientInput" name="ingredientInput">
-                <button type="button" id="addIngredientBtn">Add Ingredient</button>
-            
+            <div class="section">
+                <label>Ingredients:</label>
+                <div class="input-group">
+                <input type="text" id="ingredientInput" placeholder="Add ingredient"/>
+                <button type="button" id="addIngredientBtn">+</button>
+                </div>
                 <ul id="ingredientList"></ul>
-                <br>
-                <br>
-            
+            </div>
 
-                <label for="stepInput">Steps:</label>
-                <input type="text" id="stepInput" name="stepInput">
-                <button type="button" id="addStepBtn">Add Step</button>
-            
+            <div class="section">
+                <label>Steps:</label>
+                <div class="input-group">
+                <input type="text" id="stepInput" placeholder="Add step"/>
+                <button type="button" id="addStepBtn">+</button>
+                </div>
                 <ol id="stepList"></ol>
-                <br>
-                <br>
-            
+            </div>
 
-                <label for="notes">Notes:</label>
-                <textarea id="notes" name="notes"></textarea>
-                <br>
-                <br>
-            
+            <label for="notes">Notes:</label>
+            <textarea id="notes" placeholder="(optional) Add any additional notes..." rows="2"></textarea>
 
-                <button type="submit" id="submitRecipeBtn">Submit Recipe</button>
+            <button type="submit">Save Recipe</button>
             </form>
-            
-              
         </div>
     </section>
   </section>
@@ -148,5 +120,7 @@
   <!--Java Script-->
   <script src="js/recipe.js"></script>
 
+
+  
 </body>
 </html>

@@ -8,9 +8,9 @@ function changeSlide(direction) {
     currentIndex += direction;
 
     if (currentIndex < 0) {
-        currentIndex = images.length - 1; // Go to the last image
+        currentIndex = images.length - 1;
     } else if (currentIndex >= images.length) {
-        currentIndex = 0; // Go to the first image
+        currentIndex = 0;
     }
 
     images[currentIndex].classList.add('active');

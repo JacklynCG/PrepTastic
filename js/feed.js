@@ -16,20 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
               <p><strong>Servings:</strong> ${recipe.servings}</p>
               <p><strong>Description:</strong> ${recipe.description}</p>
               <p><strong>Time:</strong> ${recipe.time}</p>
-            
+              <button class="toggleDetails">Show Recipe</button>
+              <button class="saveBtn">Save to Recipes</button>
               <div class="recipeDetails" style="display: none;">
                 <h4>Ingredients:</h4>
                 <ul>${recipe.ingredients.split(", ").map(i => `<li>${i}</li>`).join("")}</ul>
                 <h4>Steps:</h4>
                 <ol>${recipe.steps.split(", ").map(s => `<li>${s}</li>`).join("")}</ol>
                 <p><strong>Notes:</strong> ${recipe.notes}</p>
+                
               </div>
-
-              <button class="toggleDetails">Show Recipe</button>
-              <button class="saveBtn">Save to Recipes</button>
             `;
   
-
+            
             const toggleBtn = card.querySelector(".toggleDetails");
             const details = card.querySelector(".recipeDetails");
   
@@ -39,8 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
               toggleBtn.textContent = isVisible ? "Show Recipe" : "Hide Recipe";
             });
   
+            
             const saveBtn = card.querySelector(".saveBtn");
             saveBtn.addEventListener("click", () => {
+
+
               fetch("save_to_recipe.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
               .then(res => res.json())
               .then(data => {
                 if (data.success) {
-                  alert("Recipe saved to your recipes!");
+                  alert("Recipe saved!");
                   saveBtn.disabled = true;
                   saveBtn.textContent = "Saved!";
                 } else {
@@ -57,16 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               })
               .catch(err => {
-                console.error("Save to recipes error:", err);
+                console.error("Save to feed error:", err);
                 alert("Error saving to recipes.");
               });
             });
-            
-    
-              cardsContainer.appendChild(card);
-            });
-          })
-
+  
+            cardsContainer.appendChild(card);
+          });
+        })
         .catch(error => console.error("Error fetching recipes:", error));
     }
   

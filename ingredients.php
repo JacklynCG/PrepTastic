@@ -30,20 +30,20 @@
   </div>
 
   <section id="header-title">
-    <h1 style = "font-size: 80px;">Ingredients</h1>
+    <h1>Ingredients</h1>
     <hr>
   </section>
 
   <section id="page-section">
-    <h2>Your Grocery List</h2>
+    <h2>Your Ingredients</h2>
 
     <!--Right now I am just trying to get the "checkmark" feature to work, where when ingredients are clicked on
     it will make the words a light grey to signify that the user owns that ingredient.-->
 
     <!--Basic Ingredient Feature that allows user to continously add ingredients to the list-->
     <form action="./ingredients.php" method="post">
-      <input style = "font-size: 35px;" type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name" maxlength = 50 required>
-      <input style = "font-size: 35px;" type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed" maxlength = 50 required>
+      <input type="text" id="ingredient-input" name="ingredient-input" placeholder="Enter ingredient name">
+      <input type="text" id="ingredient-amount" name="ingredient-amount" placeholder="Enter amount needed">
       <button type="submit" id="add-ingredient-btn">Add Ingredient</button>
     </form>
 
@@ -73,37 +73,29 @@
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.checked = isChecked;
-        checkbox.style.transform = "scale(2.0)";
-        checkbox.style.marginRight = "20px";
         if (isChecked) {
           label.classList.add("checked");
         }
     
-  
+       
         const span = document.createElement("span");
         span.textContent = ingredientName;
-        span.style.fontSize = "35px";
 
         const spanAmount = document.createElement("span");
         spanAmount.textContent = ingredientAmount;
-        spanAmount.style.fontSize = "35px";
     
-
+        //Remove button
         const removeBtn = document.createElement("button");
         removeBtn.textContent = " X ";
         removeBtn.classList.add("remove-btn");
         removeBtn.setAttribute("data-id", ingredientID);
-        removeBtn.style.fontSize = "20px";
-        removeBtn.style.marginLeft = "10px";
-        removeBtn.style.padding = "5px 10px";
-
         
         // remove button functionality with removing label from container
         // and removing the selected ingredient from the database by getting that ingredient's ID
         // ingredient ID is saved as an attribute for the label it is stored as
         removeBtn.addEventListener("click", function() {
           const ingredientId = this.getAttribute("data-id");
-
+          // console.log("Ingredient ID being sent: ", ingredientId);  // Log the ID
 
           fetch('delete_ingredient.php', {
             method: 'POST',
@@ -112,10 +104,10 @@
             },
             body: 'id=' + encodeURIComponent(ingredientID)
           })
-        
+          // .then(response => response.text()) {}
           .then(response => {
             // console.log("Response Status: ", response.status); // Log the HTTP response status for debugging
-            return response.text(); 
+            return response.text();  // Get the response text
           })
           .then(data => {
             // console.log("Delete response from server:", data); // Log the raw response for debugging
@@ -128,7 +120,7 @@
           });
         });
 
-        // checkbox checked
+        // to get line through full label when checkbox checked
         checkbox.addEventListener("change", function () {
           const checkedVal = checkbox.checked ? 1 : 0;
 
@@ -157,11 +149,8 @@
 
         });      
     
-     
-        const space = document.createElement("span");
-        space.textContent = ": ";
-        space.style.fontSize = "35px";
-
+       
+        const space = document.createTextNode(": ");
         label.appendChild(checkbox);
         label.appendChild(span);
         label.appendChild(space);
@@ -207,7 +196,7 @@
         $ingredients[] = $row;
       }
 
-      // adds ingredients to html page through javascript function and passing of variables from database
+      
       foreach ($ingredients as $key => $ingredient) {
         $checked = $ingredient['have_ingredient']; // == 1 ? 'true' : 'false';
         echo "<script>var name = '$ingredient[name]'</script>";

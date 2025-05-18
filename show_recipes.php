@@ -1,5 +1,4 @@
 <?php
-// show_recipes.php
 header('Content-Type: application/json');
 
 try {

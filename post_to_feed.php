@@ -12,6 +12,7 @@ include("database.php");
 
 $id = (int)$input['id'];
 
+
 $checkSql = "SELECT posted_to_feed FROM recipes WHERE id = $id";
 $result = $conn->query($checkSql);
 
@@ -23,6 +24,7 @@ if ($result && $row = $result->fetch_assoc()) {
         exit;
     }
 }
+
 
 $updateSql = "UPDATE recipes SET posted_to_feed = 3 WHERE id = $id";
 if ($conn->query($updateSql) === TRUE) {
